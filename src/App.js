@@ -1,9 +1,13 @@
+import Home from "./components/home/Home";
+import MainProvider from '../src/context/MainContext'
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <MainProvider>
+      <Header />
+      <Home />
+    </MainProvider>
   );
 }
 

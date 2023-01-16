@@ -1,13 +1,292 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
+
+@import './scss/general';
+@import './scss/animation';
+// font-family: 'Roboto', sans-serif;
+
+/* ========================================
+Color
+========================================= */
+$black: #000;
+$black1: #111111;
+$bg-color: #f8f8f8;
+$gray1: #3f3f3f;
+$lightText: #909090;
+
+/* ========================================
+General
+========================================= */
+
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-family: 'Arial', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.6rem;
+  line-height: 1;
+  font-weight: 400;
+  // font-family: 'Josefin Sans', sans-serif;
+}
+
+.container {
+  width: 1320px;
+  margin: 0 auto;
+}
+
+.heading-primary {
+  font-size: 7.4rem;
+  font-weight: 400;
+}
+
+.heading-secondary {
+  font-size: 2.8rem;
+  font-weight: 600;
+}
+
+.heading-3 {
+  font-size: 2.2rem;
+}
+
+.link,
+.link:link,
+.link:visited {
+  display: inline-block;
+  color: $black;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: $black;
+  padding: 5px 0;
+
+  position: relative;
+  animation: textSwipeUp 1.3s ease-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 3px;
+    width: 30px;
+    background-color: $black;
+    animation: buttonHoverExit 0.2s ease-out;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+      animation: buttonHover 0.2s ease-out;
+    }
+  }
+}
+
+.description {
+  font-size: 2.2rem;
+  line-height: 3.2rem;
+}
+
+
+/* ========================================
+Header
+========================================= */
+.header {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  background-color: $bg-color;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: $black;
+
+  h3 {
+    font-size: 1.8rem;
+  }
+}
+
+.header-icon-area {
+  display: flex;
+  align-items: center;
+
+  .link,
+  .link:link,
+  .link:visited {
+    position: relative;
+    margin-left: 20px;
+
+    .badge {
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      color: white;
+      background-color: $black1;
+    }
+  }
+
+  p {
+    margin-left: 15px;
+    font-size: 2rem;
+  }
+}
+
+/* ========================================
+Hero Section
+========================================= */
+
+.hero-section {
+  // display: flex;
+  width: 100%;
+  height: 760px;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+// Slider
+.slider {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 250px;
+  opacity: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.activeSlide {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nextSlide {
+  transform: translateX(100%);
+}
+.lastSlide {
+  transform: translateX(-100%);
+}
+
+.slider-text-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  h2 {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 1.4rem;
+    margin-bottom: 36px;
+    animation: textSwipeUp 0.8s ease-out;
+  }
+
+  h1 {
+    margin-bottom: 36px;
+    margin-left: -5px;
+    animation: textSwipeUp 1s ease-out;
+  }
+
+  .description {
+    max-width: 60%;
+    margin-bottom: 36px;
+    animation: textSwipeUp 1.2s ease-out;
+    animation: name duration timing-function delay iteration-count direction;
+  }
+}
+
+.slider-img-box {
+  width: 50%;
+  height: 760px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.slider-btn-group {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 3;
+
+  .slider-btn {
+    width: 12px;
+    height: 12px;
+    border: 1px solid $black1;
+    border-radius: 50%;
+    opacity: 0.2;
+
+    &:hover {
+      background-color: $black1;
+      opacity: 0.6;
+    }
+  }
+
+  .active {
+    background-color: $black1;
+    opacity: 0.6;
+  }
 }

@@ -1,0 +1,45 @@
+@keyframes textSwipeUp {
+    0% {
+        transform: translateY(80px);
+        opacity: 0;
+    }
+    
+    25%{
+        transform: translateY(80px);
+        opacity: 0.1;
+        
+    }
+    
+    50%{
+        transform: translateY(80px);
+        // opacity: 0.5;
+        
+    }
+
+    70%{
+        
+    }
+    
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+        // bottom: 50%;
+    }
+}
+
+@keyframes buttonHover {
+    from {
+        width: 30px;
+    }
+    to{
+        width: 100%;
+    }
+}
+@keyframes buttonHoverExit {
+    from {
+        width: 100%;
+    }
+    to{
+        width: 30px;
+    }
+}
