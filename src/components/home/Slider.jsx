@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const collections = [
     {
@@ -31,19 +31,32 @@ function Slider() {
         let position = 'nextSlide'
         if (itemIndex === index) {
             position = 'activeSlide'
-        } else if (itemIndex === index - 1 || (index ===0 && itemIndex===collections.length-1)) {
+        } else if (itemIndex === index - 1 || (index === 0 && itemIndex === collections.length - 1)) {
             position = 'lastSlide'
         }
         return position;
     }
-    const ParseHeader = (str) => {
+    const ParseHeader = (str, itemIndex) => {
         const [h1, strong, ...other] = str.split(' ');
         return (
-            <h1 className="heading-primary">
+            <h1 className={`heading-primary ${(changePosition(itemIndex) === "activeSlide") ? "h1animation" : null}`}>
                 {h1} <strong>{strong} </strong> {other}
             </h1>
         );
     };
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prevIndex) => {
+                prevIndex = index + 1;
+                if (prevIndex > collections.length - 1) {
+                    prevIndex = 0;
+                }
+                return prevIndex;
+            })
+        }, 3000)
+        return () => clearInterval(interval);
+    }, [index])
 
     return (
         <>
@@ -56,10 +69,10 @@ function Slider() {
                     id={'slider' + id}
                 >
                     <div className="slider-text-box">
-                        <h2>COLLECTION</h2>
-                        {ParseHeader(header)}
-                        <p className="description">{description}</p>
-                        <a href="#ff" className="btn">
+                        <h2 className={(changePosition(itemIndex) === "activeSlide") ? "h2animation" : null}>COLLECTION</h2>
+                        {ParseHeader(header, itemIndex)}
+                        <p className={`description ${(changePosition(itemIndex) === "activeSlide") ? "descAnimation" : null}`}>{description}</p>
+                        <a href="#ff" className={`btn ${(changePosition(itemIndex) === "activeSlide") ? "btnanimation" : null}`}>
                             SHOP NOW
                         </a>
                     </div>
