@@ -6,6 +6,7 @@ import {
     AiOutlineHeart,
     AiOutlineShoppingCart,
 } from 'react-icons/ai';
+import { NavLink } from 'react-router-dom';
 
 function Header() {
     return (
@@ -16,7 +17,8 @@ function Header() {
                     <h3>SHOPPING</h3>
                 </a>
                 <div className="main-navigation">
-                    <a href="/">Home</a>
+                    <NavLink to="/">Home</NavLink>
+                    <NavLink to='/women'>Women</NavLink>
                 </div>
                 <div className="header-icon-area">
                     <a href="/" className="link" >
