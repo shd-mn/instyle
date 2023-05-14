@@ -7,31 +7,35 @@ import {
     IoCartOutline,
 } from 'react-icons/io5';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+import styles from './Trending.module.scss';
 
 const Trending = () => {
     const { products, currency } = useProduct();
     const [itemNum, setItemNum] = useState(0);
     return (
         <section>
-            <div className="trending container">
-                <div className="section-nav">
-                    <div className="section-title">
+            <div className={`${styles.trending} container`}>
+                <div className={styles['section-nav']}>
+                    <div className={styles['section-title']}>
                         <h3>Trending Now</h3>
                     </div>
-                    <div className="product-btn-group">
+                    <div className={styles['product-btn-group']}>
                         <button type="button">All</button>
                         <button type="button">Women</button>
                         <button type="button">Men</button>
                         <button type="button">Children</button>
                     </div>
                 </div>
-                <div className="product-category">
+                <div className={styles['product-category']}>
                     {products &&
                         products.slice(itemNum, itemNum + 4).map((item) => (
-                            <article key={item.id} className="item-card">
-                                <figure className="img-box">
+                            <article
+                                key={item.id}
+                                className={styles['item-card']}
+                            >
+                                <figure className={styles['img-box']}>
                                     <img src={item.url[2]} alt={item.name} />
-                                    <div className="button-group">
+                                    <div className={styles['button-group']}>
                                         <span>
                                             <IoCartOutline size={'20px'} />
                                         </span>
@@ -43,14 +47,14 @@ const Trending = () => {
                                         </span>
                                     </div>
                                     {item.sale !== 0 && (
-                                        <div className="badge">
+                                        <div className={styles.badge}>
                                             {item.sale.toFixed(2)}
                                         </div>
                                     )}
                                 </figure>
-                                <div className="item-text-box">
+                                <div className={styles['item-text-box']}>
                                     <h5>{item.name}</h5>
-                                    <p className="item-price">
+                                    <p className={styles['item-price']}>
                                         <span>
                                             {convertCurrency(
                                                 item.price,
@@ -67,7 +71,7 @@ const Trending = () => {
                             </article>
                         ))}
                 </div>
-                <div className="slider-button-group">
+                <div className={styles['slider-button-group']}>
                     <button
                         type="button"
                         onClick={() => {

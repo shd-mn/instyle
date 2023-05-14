@@ -1,0 +1,123 @@
+@use '../../scss/' as *;
+
+.hero-section {
+    width: 100%;
+    height: 64rem;
+    margin-bottom: 6rem;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+
+    .hero-bg-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+    }
+}
+
+// Slider
+.slider {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 250px;
+    opacity: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.5s linear;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.activeSlide {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.nextSlide {
+    transform: translateX(100%);
+}
+
+.lastSlide {
+    transform: translateX(-100%);
+}
+
+.slider-text-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    h2 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 1.4rem;
+        margin-bottom: 36px;
+    }
+
+    .h2animation {
+        animation: textSwipeUp 0.8s ease-out;
+    }
+
+    h1 {
+        margin-bottom: 36px;
+        margin-left: -5px;
+    }
+
+    .h1animation {
+        animation: textSwipeUp 1s ease-out;
+    }
+
+    .description {
+        max-width: 60%;
+        margin-bottom: 36px;
+    }
+
+    .descAnimation {
+        animation: textSwipeUp 1.2s ease-out;
+    }
+}
+
+.slider-img-box {
+    width: 50%;
+    height: 760px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.slider-btn-group {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 3;
+
+    .slider-btn {
+        width: 12px;
+        height: 12px;
+        border: 1px solid $black1;
+        border-radius: 50%;
+        opacity: 0.2;
+
+        &:hover {
+            background-color: $black1;
+            opacity: 0.6;
+        }
+    }
+
+    .active {
+        background-color: $black1;
+        opacity: 0.6;
+    }
+}

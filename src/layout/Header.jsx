@@ -8,40 +8,42 @@ import {
 } from 'react-icons/ai';
 import { NavLink } from 'react-router-dom';
 
+import styles from './Header.module.scss';
+
 function Header() {
     return (
-        <header className="header">
-            <nav className="navbar container">
-                <a href="/" className="logo">
+        <header className={styles.header}>
+            <nav className={`${styles.navbar}`}>
+                <a href="/" className={styles.logo}>
                     <FaShopify style={{ fontSize: '4.6rem' }} />
                     <h3>SHOPPING</h3>
                 </a>
                 <div className="main-navigation">
                     <NavLink to="/">Home</NavLink>
-                    <NavLink to='/women'>Women</NavLink>
+                    <NavLink to="/women">Women</NavLink>
                 </div>
-                <div className="header-icon-area">
-                    <a href="/" className="link" >
+                <div className={styles['header-action']}>
+                    <a href="/" className={styles.link}>
                         <AiOutlineSearch
-                            style={{ fontSize: '3.2rem', color: '#3f3f3f' }}
+                            style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
                         />
                     </a>
-                    <a href="/account" className="link" >
+                    <a href="/account" className={styles.link}>
                         <AiOutlineUser
-                            style={{ fontSize: '3.2rem', color: '#3f3f3f' }}
+                            style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
                         />
                     </a>
-                    <a href="/wishlist" className="link" >
+                    <a href="/wishlist" className={styles.link}>
                         <AiOutlineHeart
-                            style={{ fontSize: '3.2rem', color: '#3f3f3f' }}
+                            style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
                         />
-                        <span className="badge">0</span>
+                        <span className={styles.badge}>0</span>
                     </a>
-                    <a href="/cart" className="link" >
+                    <a href="/cart" className={styles.link}>
                         <AiOutlineShoppingCart
-                            style={{ fontSize: '3.2rem', color: '#3f3f3f' }}
+                            style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
                         />
-                        <span className="badge">0</span>
+                        <span className={styles.badge}>0</span>
                     </a>
                     <p>$0.00</p>
                 </div>
