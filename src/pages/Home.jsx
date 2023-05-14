@@ -1,6 +1,6 @@
 import React from 'react';
-import Hero from './Hero';
-import Trending from './Trending';
+import Hero from '../container/Home/Hero';
+import Trending from '../container/Home/Trending';
 
 const Home = () => {
     return (
