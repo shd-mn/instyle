@@ -13,11 +13,13 @@ const MainProvider = ({ children }) => {
             .catch((err) => console.log(err));
     }, []);
 
+    const trendingProducts = products.slice(0, products.length)
     const data = {
         products,
         setProducts,
         currency,
         setCurrency,
+        trendingProducts
     };
 
     return <MainContext.Provider value={data}>{children}</MainContext.Provider>;

@@ -7,7 +7,8 @@
 .product-category {
     display: flex;
     position: relative;
-    justify-content: space-between;
+    gap: 2rem;
+    overflow: hidden;
 }
 
 .section-nav {
@@ -23,6 +24,7 @@
 }
 
 .item-card {
+    width: 28rem;
     flex-shrink: 0;
 
     &:hover {
@@ -51,51 +53,51 @@
             }
         }
     }
-
-    .img-box {
-        position: relative;
-        margin-bottom: 2rem;
-        overflow: hidden;
-
-        img {
-            display: block;
-            width: 28rem;
-            height: 40rem;
-            object-fit: cover;
-        }
-    }
 }
 
-.button-group {
-    position: absolute;
-    left: 50%;
-    bottom: -4.5rem;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 2rem;
+.img-box {
+    position: relative;
+    margin-bottom: 2rem;
+    overflow: hidden;
 
-    visibility: hidden;
-    opacity: 0;
+    img {
+        display: block;
+        width: 100%;
+        height: 40rem;
+        object-fit: cover;
+    }
 
-    span {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        background-color: $white-clr;
+    .button-group {
+        position: absolute;
+        left: 50%;
+        bottom: -4.5rem;
+        transform: translateX(-50%);
         display: flex;
-        justify-content: center;
-        align-items: center;
+        gap: 2rem;
 
-        &:nth-child(1) {
-            transform: translateY(0px);
-        }
+        visibility: hidden;
+        opacity: 0;
 
-        &:nth-child(2) {
-            transform: translateY(100px);
-        }
+        span {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: $white-clr;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-        &:nth-child(3) {
-            transform: translateY(200px);
+            &:nth-child(1) {
+                transform: translateY(0px);
+            }
+
+            &:nth-child(2) {
+                transform: translateY(100px);
+            }
+
+            &:nth-child(3) {
+                transform: translateY(200px);
+            }
         }
     }
 }
@@ -121,7 +123,6 @@
     font-size: 1.4rem;
     background: $primary-clr;
     color: $white-clr;
-
     border-radius: 5px;
     padding: 5px;
 }
@@ -129,7 +130,7 @@
 .slider-button-group {
     width: 100%;
     position: absolute;
-    bottom: 10rem;
+    bottom: 5rem;
     display: flex;
     justify-content: space-between;
     margin-left: -4rem;

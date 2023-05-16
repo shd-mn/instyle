@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useProduct } from '../../context/MainContext';
 import { convertCurrency } from '../../utils/convertCurrency';
 import {
@@ -10,8 +10,22 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import styles from './Trending.module.scss';
 
 const Trending = () => {
-    const { products, currency } = useProduct();
-    const [itemNum, setItemNum] = useState(0);
+    const { products, trendingProducts, currency } = useProduct();
+    const [isEnd, setIsEnd] = useState(false);
+    const [isStart, setIsStart] = useState(false);
+    const container = useRef();
+
+    const isScrollStart = () => {};
+
+    const isScrollEnd = () => {};
+
+    const handlePrevProducts = () => {
+        container.current.scrollLeft -= '280';
+    };
+    const handleNextProducts = () => {
+        container.current.scrollLeft += '280';
+    };
+
     return (
         <section>
             <div className={`${styles.trending} container`}>
@@ -26,9 +40,9 @@ const Trending = () => {
                         <button type="button">Children</button>
                     </div>
                 </div>
-                <div className={styles['product-category']}>
-                    {products &&
-                        products.slice(itemNum, itemNum + 4).map((item) => (
+                <div ref={container} className={styles['product-category']}>
+                    {trendingProducts &&
+                        trendingProducts.map((item) => (
                             <article
                                 key={item.id}
                                 className={styles['item-card']}
@@ -75,18 +89,21 @@ const Trending = () => {
                     <button
                         type="button"
                         onClick={() => {
-                            setItemNum(itemNum - 1);
+                            handlePrevProducts();
                         }}
+                        disabled={isStart}
                     >
                         <span>
                             <HiOutlineChevronLeft />
                         </span>
                     </button>
+
                     <button
                         type="button"
                         onClick={() => {
-                            setItemNum(itemNum + 1);
+                            handleNextProducts();
                         }}
+                        disabled={isEnd}
                     >
                         <span>
                             <HiOutlineChevronRight />
