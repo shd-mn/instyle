@@ -12,6 +12,8 @@
     text-decoration: none;
     outline: none;
     border: none;
+    list-style: none;
+    text-decoration: none;
 }
 
 html {
@@ -36,11 +38,26 @@ body {
     max-width: 126rem;
     margin: 0 auto;
     margin-bottom: 6rem;
-    padding: 0 2rem;
+    padding: 0 4rem;
 
     @include xl {
         max-width: 96rem;
     }
+}
+
+a {
+    color: inherit;
+    &:hover,
+    &:active {
+        color: $primary-clr;
+    }
+    &.active {
+        color: $primary-clr;
+    }
+}
+
+.navlink {
+    padding: 5px;
 }
 
 .h1 {
