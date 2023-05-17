@@ -1,0 +1,30 @@
+@use '../../scss/' as *;
+
+.feature {
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background-color: $light-gray;
+            width: 100%;
+            padding: 2rem 2rem;
+
+            h3 {
+                margin-bottom: 5px;
+            }
+
+            .text-box {
+                padding-left: 2rem;
+                border-left: 1px solid $dark-gray;
+            }
+        }
+    }
+}
+
+
