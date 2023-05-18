@@ -4,6 +4,7 @@ const MainContext = createContext();
 
 const MainProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
+    const [news, setNews] = useState([]);
     const [currency, setCurrency] = useState('USD');
 
     useEffect(() => {
@@ -12,19 +13,27 @@ const MainProvider = ({ children }) => {
             .then((res) => setProducts(res.data))
             .catch((err) => console.log(err));
     }, []);
+    useEffect(() => {
+        axios
+            .get('http://localhost:3010/news')
+            .then((res) => setNews(res.data))
+            .catch((err) => console.log(err));
+    }, []);
 
-    const trendingProducts = products.slice(0, products.length)
+    const trendingProducts = products.slice(0, products.length);
     const data = {
         products,
         setProducts,
+        news,
+        setNews,
         currency,
         setCurrency,
-        trendingProducts
+        trendingProducts,
     };
 
     return <MainContext.Provider value={data}>{children}</MainContext.Provider>;
 };
 
-export const useProduct = () => useContext(MainContext);
+export const useMyContext = () => useContext(MainContext);
 
 export default MainProvider;

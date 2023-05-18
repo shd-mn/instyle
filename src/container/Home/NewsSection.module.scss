@@ -1,0 +1,31 @@
+@use '../../scss/' as *;
+
+.news-section {
+    background-color: $light-gray;
+    padding: 6rem 0;
+}
+
+.news {
+    display: flex;
+    gap: 2rem;
+}
+
+.single-news {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.figure {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    img {
+        transition: all 0.3s;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}

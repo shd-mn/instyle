@@ -41,8 +41,8 @@ function Header() {
                         <NavLink className="navlink" to="/baby">
                             Baby Collection
                         </NavLink>
-                        <NavLink className="navlink" to="/blog">
-                            Blog
+                        <NavLink className="navlink" to="/news">
+                            News
                         </NavLink>
                     </nav>
                     <div className={styles.action}>
