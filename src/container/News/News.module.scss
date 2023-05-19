@@ -1,0 +1,13 @@
+@use '../../scss/' as *;
+.news {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.single-news {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
