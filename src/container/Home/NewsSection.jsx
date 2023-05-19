@@ -16,14 +16,14 @@ const NewsSection = () => {
                     {news.map((item) => (
                         <article
                             key={item.id}
-                            className={styles['single-news']}
+                            className={styles['news-item']}
                         >
                             <figure className={styles.figure}>
                                 <img src={item.img[0]} alt={item.title} />
                             </figure>
                             <h5>{item.category}</h5>
                             <h3>{item.title}</h3>
-                            <Link className="link" to={`/news/${item.title}`}>
+                            <Link className="link" to={`/news/${item.id}`}>
                                 Read More
                             </Link>
                         </article>

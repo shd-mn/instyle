@@ -10,12 +10,21 @@
     gap: 2rem;
 }
 
-.single-news {
+.news-item {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
+
+    a,
+    a:link,
+    a:visited {
+        padding-left: 0;
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
 }
 
 .figure {
