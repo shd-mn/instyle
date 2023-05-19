@@ -6,12 +6,7 @@ function Hero() {
     const [index, setIndex] = useState(0);
     return (
         <section className={styles['hero-section']}>
-            <Slider index={index} setIndex={setIndex} />
-            <img
-                className={styles['hero-bg-img']}
-                src={require('../../assets/images/hero-bg.jpg')}
-                alt=""
-            />
+            <Slider index={index} setIndex={setIndex} />            
         </section>
     );
 }
