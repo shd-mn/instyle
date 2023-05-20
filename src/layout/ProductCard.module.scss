@@ -78,6 +78,11 @@
             transform: translateY(300px);
         }
     }
+
+    .active {
+        color: $white-clr;
+        background-color: $primary-clr-300;
+    }
 }
 .product-text-box {
     display: flex;
