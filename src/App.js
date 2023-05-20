@@ -7,6 +7,7 @@ import Women from './pages/Women';
 import NewsPage from './pages/NewsPage';
 import SingleNews from './container/News/SingleNews';
 import NotFound from './pages/NotFound';
+import CartPage from './pages/CartPage';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Route index element={<NewsPage />} />
                     <Route path=":id" element={<SingleNews />} />
                 </Route>
+                <Route path="/cart" element={<CartPage />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </MainProvider>

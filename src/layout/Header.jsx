@@ -11,9 +11,11 @@ import {
 import { NavLink } from 'react-router-dom';
 
 import styles from './Header.module.scss';
+import { useMyContext } from '../context/MainContext';
 
 function Header() {
     const [showMobileNav, setShowMobileNav] = useState(false);
+    const { cart } = useMyContext();
     return (
         <header className={styles.header}>
             <div className={styles.container}>
@@ -66,7 +68,7 @@ function Header() {
                             <AiOutlineShoppingCart
                                 style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
                             />
-                            <span className={styles.badge}>0</span>
+                            <span className={styles.badge}>{cart.length}</span>
                         </a>
                         <button
                             className={`${styles.btn} ${styles['close-btn']}`}
