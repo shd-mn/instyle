@@ -15,7 +15,7 @@ function Slider() {
                 }
                 return prevIndex;
             });
-        }, 7000);
+        }, 5000);
         return () => clearInterval(interval);
     }, [index]);
 

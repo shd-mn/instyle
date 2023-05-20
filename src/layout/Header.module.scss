@@ -1,15 +1,10 @@
 @use '../scss/' as *;
 
-/* ========================================
-Header
-========================================= */
 .header {
     height: 8rem;
     width: 100%;
 
-    background-color: $bg-color;
-    // @include xl {
-    // }
+    background-color: $light-gray;
 }
 
 .container {

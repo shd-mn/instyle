@@ -6,7 +6,7 @@ const NewsSection = () => {
     return (
         <section className={styles['news-section']}>
             <div className="container">
-                <div className="section-nav">
+                <div className="category-nav">
                     <h2 className="h2">Latest News</h2>
                     <Link className="link" to="/news">
                         View All
@@ -14,10 +14,7 @@ const NewsSection = () => {
                 </div>
                 <div className={styles.news}>
                     {news.map((item) => (
-                        <article
-                            key={item.id}
-                            className={styles['news-item']}
-                        >
+                        <article key={item.id} className={styles['news-item']}>
                             <figure className={styles.figure}>
                                 <img src={item.img[0]} alt={item.title} />
                             </figure>
