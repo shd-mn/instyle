@@ -1,0 +1,16 @@
+@use '../../../scss/' as *;
+.category-btn-group {
+    button {
+        padding: 10px;
+        margin-left: 2rem;
+        background: transparent;
+        text-transform: capitalize;
+        cursor: pointer;
+    }
+
+    .active {
+        &::after {
+            width: 100%;
+        }
+    }
+}

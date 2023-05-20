@@ -1,0 +1,42 @@
+@use '../../../scss/' as *;
+
+.product-category {
+    min-height: 40rem;
+    display: flex;
+    position: relative;
+    gap: 2rem;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+    scroll-behavior: smooth;
+}
+
+
+
+.slider-button-group {
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    bottom: 30%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: -4rem;
+}
+
+.slider-btn {
+    background: none;
+    font-size: 3rem;
+    opacity: 0.5;
+    cursor: pointer;
+    pointer-events: all;
+    &:hover {
+        color: $primary-clr;
+    }
+    &:disabled {
+        cursor: auto;
+        color: gray;
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
