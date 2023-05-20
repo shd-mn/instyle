@@ -1,37 +1,58 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import { createContext, useContext, useEffect, useReducer } from 'react';
+import { TOGGLE_CART, DISPLAY_ITEMS, GET_DATA, GET_NEWS } from './actions';
+import { reducer } from './reducer';
+
+import { useFetch } from '../hooks/useFetch';
+
 const MainContext = createContext();
+const initialState = {
+    products: [],
+    news: [],
+    isLoading: false,
+    currency: 'USD',
+    cart: [],
+};
 
 const MainProvider = ({ children }) => {
-    const [products, setProducts] = useState([]);
-    const [news, setNews] = useState([]);
-    const [currency, setCurrency] = useState('USD');
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    const { data: products, isLoading } = useFetch('products');
+    const { data: news } = useFetch('news');
 
     useEffect(() => {
-        axios
-            .get('http://localhost:3010/products')
-            .then((res) => setProducts(res.data))
-            .catch((err) => console.log(err));
-    }, []);
-    useEffect(() => {
-        axios
-            .get('http://localhost:3010/news')
-            .then((res) => setNews(res.data))
-            .catch((err) => console.log(err));
-    }, []);
+        dispatch({ type: GET_DATA, payload: products });
+        dispatch({ type: GET_NEWS, payload: news });
+    }, [products, news]);
 
-    const trendingProducts = products.slice(0, products.length);
-    const data = {
-        products,
-        setProducts,
-        news,
-        setNews,
-        currency,
-        setCurrency,
-        trendingProducts,
+    const toggleCart = (e, product) => {
+        e.preventDefault();
+        dispatch({ type: TOGGLE_CART, payload: product });
     };
 
-    return <MainContext.Provider value={data}>{children}</MainContext.Provider>;
+    useEffect(() => {
+        if (localStorage.getItem('cart')) {
+            dispatch({
+                type: DISPLAY_ITEMS,
+                payload: JSON.parse(localStorage.getItem('cart')),
+            });
+        }
+    }, []);
+
+    const trendingProducts = state.products.slice(0, state.products.length);
+    const newProducts = state.products
+        .filter((product) => product.new)
+        .slice(0, state.products.length);
+
+    const value = {
+        ...state,
+        toggleCart,
+        trendingProducts,
+        newProducts,
+    };
+
+    return (
+        <MainContext.Provider value={value}>{children}</MainContext.Provider>
+    );
 };
 
 export const useMyContext = () => useContext(MainContext);
