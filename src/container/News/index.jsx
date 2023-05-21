@@ -3,9 +3,11 @@ import { useMyContext } from '../../context/MainContext';
 import styles from './News.module.scss';
 import PageTitle from '../../layout/PageTitle';
 import { useLocation } from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
 
 const News = () => {
-    const { news } = useMyContext();
+    // const { news } = useMyContext();
+    const { data: news, isLoading, error } = useFetch('news', '*');
     const { pathname } = useLocation();
 
     return (

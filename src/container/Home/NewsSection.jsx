@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useMyContext } from '../../context/MainContext';
 import styles from './NewsSection.module.scss';
-const NewsSection = () => {
-    const { news } = useMyContext();
+const NewsSection = ({ news, isLoading, error }) => {
     return (
         <section className={styles['news-section']}>
             <div className="container">
