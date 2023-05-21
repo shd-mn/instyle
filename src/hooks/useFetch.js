@@ -1,16 +1,32 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export const useFetch = (endpoint) => {
+export const useFetch = (endpoint, select, filter, page) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
-    const API = `${process.env.REACT_APP_API}/${endpoint}`;
+    let API = '';
+    if (filter) {
+        API = `${process.env.REACT_APP_API}/${endpoint}?select=${select}&${filter}`;
+    } else {
+        API = `${process.env.REACT_APP_API}/${endpoint}?select=${select}`;
+    }
+
+    let range = '';
+    if (page) {
+        range = page;
+    }
 
     const getData = async (url) => {
         setIsLoading(true);
         try {
-            const result = await axios.get(url);
+            const result = await axios.get(url, {
+                headers: {
+                    apikey: process.env.REACT_APP_API_KEY,
+                    Authorization: 'Bearer ' + process.env.REACT_APP_API_KEY,
+                    Range: range,
+                },
+            });
             setData(result.data);
             setIsLoading(false);
         } catch (error) {
