@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
 import ProductCard from '../../../layout/ProductCard';
-import styles from './Category.module.scss';
 import CategoryNav from './CategoryNav';
+import styles from './Category.module.scss';
 
 const Category = ({ products, sectionTitle }) => {
     const [selected, setSelected] = useState('all');
@@ -81,13 +80,7 @@ const Category = ({ products, sectionTitle }) => {
                 <div ref={container} className={styles['product-category']}>
                     {filteredProduct &&
                         filteredProduct.map((product) => (
-                            <Link
-                                key={product.id}
-                                className={styles['product-link']}
-                                to={`/${product.id}`}
-                            >
-                                <ProductCard product={product} />
-                            </Link>
+                            <ProductCard key={product.id} product={product} />
                         ))}
                 </div>
                 <div className={styles['slider-button-group']}>
