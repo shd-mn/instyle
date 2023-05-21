@@ -15,7 +15,7 @@ import { useMyContext } from '../context/MainContext';
 
 function Header() {
     const [showMobileNav, setShowMobileNav] = useState(false);
-    const { cart } = useMyContext();
+    const { cart, wishlist } = useMyContext();
     return (
         <header className={styles.header}>
             <div className={styles.container}>
@@ -62,7 +62,9 @@ function Header() {
                             <AiOutlineHeart
                                 style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
                             />
-                            <span className={styles.badge}>0</span>
+                            <span className={styles.badge}>
+                                {wishlist.length}
+                            </span>
                         </a>
                         <a href="/cart" className={styles.link}>
                             <AiOutlineShoppingCart
