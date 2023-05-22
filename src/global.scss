@@ -77,10 +77,12 @@ img {
 }
 
 .navlink {
+
     &:hover,
     &:active {
         color: $primary-clr;
     }
+
     &.active {
         color: $primary-clr;
     }
@@ -94,6 +96,7 @@ img {
     display: inline-block;
     color: $black;
     position: relative;
+
     &::after {
         content: '';
         position: absolute;
@@ -224,31 +227,30 @@ img {
     margin-bottom: 4rem;
 }
 
-.page-title {
-    width: 100%;
-    height: 10rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-
-    margin: 0 auto;
-    margin-bottom: 6rem;
-    background-color: rgb(255, 196, 0);
-}
-
 .breadcrumb {
-    height: 4rem;
+    padding: 3px;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
     display: flex;
-    justify-content: center;
     align-items: center;
-    .breadcrumb-nav {
-        display: flex;
-        align-items: center;
+
+    a,
+    span {
+        margin-right: 5px;
     }
 
     a {
-        margin: 5px;
+        padding: 2px 0;
         text-transform: capitalize;
+        border-bottom: 1px solid transparent;
+
+        &:hover {
+            border-bottom: 1px solid $primary-clr;
+        }
+    }
+
+    p {
+        text-transform: capitalize;
+        opacity: 0.7;
     }
 }
