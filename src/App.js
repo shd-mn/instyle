@@ -17,8 +17,10 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/women" element={<Women />} />
-                <Route path="/product/:id" element={<SingleProduct />} />
+                <Route path="/women">
+                    <Route index element={<Women />} />
+                    <Route path=":id" element={<SingleProduct />} />
+                </Route>
                 <Route path="/news">
                     <Route index element={<NewsPage />} />
                     <Route path=":id" element={<SingleNews />} />
