@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 export const PathSplit = (str) => {
     return str.split('/').map(
-        (item) =>
-            item !== '' && (
+        (item, idx, arr) =>
+            item !== '' &&
+            idx !== arr.length - 1 && (
                 <Fragment key={item}>
-                    /<Link to={`/${item}`}>{item}</Link>
+                    <span>/</span>
+                    <Link to={`/${item}`}>{item}</Link>
                 </Fragment>
             )
     );
