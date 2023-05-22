@@ -10,7 +10,7 @@
             bottom: 3rem;
             transition: all 0.2s;
             .btn {
-                transition: all 0.3s;
+                transition: all 0.1s, transform 0.3s;
                 &:nth-child(1) {
                     transform: translateY(0);
                 }

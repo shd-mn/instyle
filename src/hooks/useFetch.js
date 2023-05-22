@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const useFetch = (endpoint, select, filter, page) => {
     const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
     let API = '';
     if (filter) {
