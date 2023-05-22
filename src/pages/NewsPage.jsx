@@ -1,6 +1,10 @@
 import News from '../container/News';
 
 const NewsPage = () => {
-    return <News />;
+    return (
+        <main>
+            <News />
+        </main>
+    );
 };
 export default NewsPage;

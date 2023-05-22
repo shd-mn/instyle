@@ -1,19 +1,15 @@
 import { Link } from 'react-router-dom';
-import { useMyContext } from '../../context/MainContext';
 import styles from './News.module.scss';
-import PageTitle from '../../layout/PageTitle';
-import { useLocation } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const News = () => {
-    // const { news } = useMyContext();
     const { data: news, isLoading, error } = useFetch('news', '*');
-    const { pathname } = useLocation();
 
     return (
         <>
-            <PageTitle title="News" pathname={pathname} />
             <div className="container">
+                <Breadcrumb title="News" />
                 <div className={styles.news}>
                     {news.map((item) => (
                         <article key={item.id} className={styles['news-item']}>
