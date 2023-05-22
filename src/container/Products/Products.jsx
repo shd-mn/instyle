@@ -1,9 +1,22 @@
+import { useFetch } from '../../hooks/useFetch';
 import { useMyContext } from '../../context/MainContext';
-import ProductCard from '../../layout/ProductCard';
+import Breadcrumb from '../../components/Breadcrumb';
 import Filter from './Filter';
+import ProductCard from '../../layout/ProductCard';
 import styles from './Products.module.scss';
-const Products = ({ products, isLoading, error }) => {
+const Products = ({ category }) => {
     const { isChecked } = useMyContext();
+
+    const {
+        data: products,
+        isLoading,
+        error,
+    } = useFetch('products', '*', `category=eq.${category}`, '0-17');
+    // & price=gt.90 & price=lte.138
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     const filtered = products.filter((item) => {
         const { color, size } = isChecked;
@@ -15,18 +28,17 @@ const Products = ({ products, isLoading, error }) => {
     });
 
     return (
-        <section>
-            <div className="container">
-                <div className={styles.products}>
-                    <Filter products={products} />
-                    <div className={styles['products-list']}>
-                        {filtered?.map((product) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
-                    </div>
+        <div className="container">
+            <Breadcrumb title={category} />
+            <div className={styles.products}>
+                <Filter products={products} />
+                <div className={styles['products-list']}>
+                    {filtered?.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))}
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 export default Products;

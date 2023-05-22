@@ -9,14 +9,14 @@ import {
 import styles from './ProductCard.module.scss';
 
 const ProductCard = ({ product }) => {
-    const { id, name, price, sale, url } = product;
+    const { id, name, category, price, sale, url } = product;
     const { currency, cart, toggleCart, wishlist, toggleWishlist } =
         useMyContext();
     const hasCart = cart.some((item) => item.id === product.id);
     const hasWishlist = wishlist.some((item) => item.id === product.id);
 
     return (
-        <Link to={`/product/${id}`}>
+        <Link to={`/${category}/${id}`}>
             <article className={styles['product-card']}>
                 <figure className={styles['img-box']}>
                     <img src={url[0]} alt={name} />
