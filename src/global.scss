@@ -7,11 +7,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    text-decoration: none;
     outline: none;
-    border: none;
     list-style: none;
-    text-decoration: none;
 }
 
 html {
@@ -45,6 +42,7 @@ body {
 
 a {
     color: inherit;
+    text-decoration: none;
 }
 
 .navlink {
@@ -73,11 +71,10 @@ a {
 img {
     width: 100%;
     height: 100%;
-    display: inline-block;
+    display: block;
 }
 
 .navlink {
-
     &:hover,
     &:active {
         color: $primary-clr;
@@ -114,6 +111,10 @@ img {
             width: 100%;
         }
     }
+}
+
+button {
+    cursor: pointer;
 }
 
 .btn,
