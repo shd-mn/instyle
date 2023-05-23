@@ -1,0 +1,97 @@
+@use '../../scss/' as *;
+
+.tab-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    button {
+        padding: 5px 0;
+        padding-bottom: 2rem;
+        font-size: 2rem;
+        color: $black;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: 10;
+            bottom: -3px;
+            left: 0;
+            height: 3px;
+            width: 0px;
+            background-color: $primary-clr;
+            transition: all 0.2s;
+        }
+
+        &.active {
+            &::after {
+                width: 100%;
+            }
+        }
+
+        &:hover {
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.tab-content {
+    width: 100%;
+    padding: 3rem 2rem;
+    background-color: $light-gray;
+
+    .desc {
+        max-width: 40%;
+        p {
+            font-size: 1.6rem;
+        }
+    }
+    li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+
+        span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #000;
+        }
+    }
+
+    p {
+        line-height: 1.5;
+        font-size: 1.8rem;
+    }
+
+    .reviews {
+        margin-bottom: 4rem;
+        .stars {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            h5 {
+                color: gray;
+            }
+        }
+        .comment {
+            color: gray;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .rating-info {
+            font-size: 1.4rem;
+            opacity: 0.5;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+    }
+}
