@@ -1,6 +1,8 @@
+import { useProductContext } from '../../context/ProductsContext';
 import Category from './Layouts/Category';
 
-const Trending = ({ products, isLoading, error }) => {
+const Trending = () => {
+    const { products, isLoading, error } = useProductContext();
     const trendingProducts = products
         .filter((product) => product.popular)
         .slice(0, products.length);

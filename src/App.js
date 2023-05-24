@@ -1,6 +1,4 @@
-import MainProvider from '../src/context/MainContext';
-import { Routes } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './layout/Header';
 import Home from './pages/Home';
 import Women from './pages/Women';
@@ -13,7 +11,7 @@ import CartPage from './pages/CartPage';
 
 function App() {
     return (
-        <MainProvider>
+        <Router>
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -29,7 +27,7 @@ function App() {
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
-        </MainProvider>
+        </Router>
     );
 }
 

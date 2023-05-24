@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import styles from './NewsSection.module.scss';
-const NewsSection = ({ news, isLoading, error }) => {
+import { useFetch } from '../../hooks/useFetch';
+const NewsSection = () => {
+    const { data: news, isLoading, error } = useFetch('news', '*', '', '0-2');
     return (
         <section className={styles['news-section']}>
             <div className="container">

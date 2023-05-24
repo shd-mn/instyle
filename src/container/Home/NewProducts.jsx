@@ -1,5 +1,7 @@
+import { useProductContext } from '../../context/ProductsContext';
 import Category from './Layouts/Category';
-const NewProducts = ({ products, isLoading, error }) => {
+const NewProducts = () => {
+    const { products, isLoading, error } = useProductContext();
     const newProducts = products
         .filter((product) => product.new)
         .slice(0, products.length);
