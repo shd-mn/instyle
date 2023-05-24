@@ -4,6 +4,7 @@ import Breadcrumb from '../../components/Breadcrumb';
 import Filter from './Filter';
 import ProductCard from '../../layout/ProductCard';
 import styles from './Products.module.scss';
+import CardSkeleton from '../../layout/CardSkeleton';
 const Products = ({ category }) => {
     const { isChecked } = useMyContext();
 
@@ -13,10 +14,6 @@ const Products = ({ category }) => {
         error,
     } = useFetch('products', '*', `category=eq.${category}`, '0-17');
     // & price=gt.90 & price=lte.138
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
 
     const filtered = products.filter((item) => {
         const { color, size } = isChecked;
@@ -31,8 +28,9 @@ const Products = ({ category }) => {
         <div className="container">
             <Breadcrumb title={category} />
             <div className={styles.products}>
-                <Filter products={products} />
+                <Filter products={products} isLoading={isLoading} />
                 <div className={styles['products-list']}>
+                    {isLoading && <CardSkeleton count={9} />}
                     {filtered?.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}

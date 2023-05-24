@@ -63,6 +63,14 @@ a {
     font-size: 2.2rem;
 }
 
+.w-100 {
+    width: 100%;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
 .description {
     font-size: 2.2rem;
     line-height: 3.2rem;
@@ -254,4 +262,12 @@ button {
         text-transform: capitalize;
         opacity: 0.7;
     }
+}
+
+.skeleton {
+    margin-bottom: 1rem;
+}
+
+.skeleton-text {
+    text-align: center;
 }

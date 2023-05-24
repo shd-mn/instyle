@@ -1,6 +1,14 @@
 import styles from './Products.module.scss';
 import FilterList from './FilterList';
-const Filter = ({ products }) => {
+import FilterSkleton from './FilterSkleton';
+const Filter = ({ products, isLoading }) => {
+    if (isLoading) {
+        return (
+            <div className={styles.filter}>
+                <FilterSkleton count={5} />;
+            </div>
+        );
+    }
     return (
         <div className={styles.filter}>
             <FilterList title="size" products={products} />

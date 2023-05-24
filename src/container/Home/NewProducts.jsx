@@ -5,6 +5,6 @@ const NewProducts = () => {
     const newProducts = products
         .filter((product) => product.new)
         .slice(0, products.length);
-    return <Category sectionTitle="New Product" products={newProducts} />;
+    return <Category sectionTitle="New Product" products={newProducts} isLoading={isLoading} />;
 };
 export default NewProducts;

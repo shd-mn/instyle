@@ -3,9 +3,10 @@ import { useEffect, useRef, useState } from 'react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ProductCard from '../../../layout/ProductCard';
 import CategoryNav from './CategoryNav';
+import CardSkeleton from '../../../layout/CardSkeleton';
 import styles from './Category.module.scss';
 
-const Category = ({ products, sectionTitle }) => {
+const Category = ({ products, isLoading, sectionTitle }) => {
     const [selected, setSelected] = useState('all');
     const [isEnd, setIsEnd] = useState(false);
     const [isStart, setIsStart] = useState(false);
@@ -78,10 +79,10 @@ const Category = ({ products, sectionTitle }) => {
                     handleCategory={handleCategory}
                 />
                 <div ref={container} className={styles['product-category']}>
-                    {filteredProduct &&
-                        filteredProduct.map((product) => (
-                            <ProductCard key={product.id} product={product} />
-                        ))}
+                    {isLoading && <CardSkeleton count={4} />}
+                    {filteredProduct.map((product) => (
+                        <ProductCard key={product.id} product={product} />
+                    ))}
                 </div>
                 <div className={styles['slider-button-group']}>
                     <button
