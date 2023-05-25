@@ -5,6 +5,7 @@ import {
     GET_WISHLIST,
     TOGGLE_WISHLIST,
     TOGGLE_FILTER,
+    ADD_TO_CART,
 } from './actions';
 import { reducer } from './reducer';
 
@@ -27,7 +28,16 @@ const MainProvider = ({ children }) => {
 
     const toggleCart = (e, product) => {
         e.preventDefault();
-        dispatch({ type: TOGGLE_CART, payload: product });
+        const cartItem = {
+            ...product,
+            quantity: 1,
+            selectedColor: product.color[0],
+            selectedSize: product.size[0],
+        };
+        dispatch({ type: TOGGLE_CART, payload: cartItem });
+    };
+    const addToCart = (product) => {
+        dispatch({ type: ADD_TO_CART, payload: product });
     };
 
     const toggleWishlist = (e, product) => {
@@ -58,6 +68,7 @@ const MainProvider = ({ children }) => {
         ...state,
         dispatch,
         toggleCart,
+        addToCart,
         toggleWishlist,
         filterProducts,
     };

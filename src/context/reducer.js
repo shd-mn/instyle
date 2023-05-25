@@ -6,6 +6,7 @@ import {
     TOGGLE_WISHLIST,
     GET_WISHLIST,
     TOGGLE_FILTER,
+    ADD_TO_CART,
 } from './actions';
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -48,6 +49,21 @@ export const reducer = (state, action) => {
                 );
             } else {
                 newCart = [...state.cart, action.payload];
+            }
+
+            localStorage.setItem('cart', JSON.stringify(newCart));
+            return { ...state, cart: newCart };
+        }
+
+        case ADD_TO_CART: {
+            const checkCartItem = state.cart.some(
+                (item) => item.id === action.payload.id
+            );
+            let newCart;
+            if (!checkCartItem) {
+                newCart = [...state.cart, action.payload];
+            } else {
+                newCart = [...state.cart];
             }
 
             localStorage.setItem('cart', JSON.stringify(newCart));
