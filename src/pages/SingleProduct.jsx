@@ -1,4 +1,4 @@
-import Product from '../container/Products/Product';
+import Product from '../container/Product/';
 const SingleProduct = () => {
     return (
         <main>

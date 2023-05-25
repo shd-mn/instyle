@@ -41,7 +41,7 @@ export const NewsSkeleton = ({ count }) => {
     return Array(count)
         .fill(0)
         .map((_, index) => (
-            <div style={{ width: '100%' }}>
+            <div key={index} style={{ width: '100%' }}>
                 <div className="skeleton">
                     <Skeleton containerClassName="flex-1" height={250} />
                 </div>

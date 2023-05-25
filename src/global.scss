@@ -83,13 +83,14 @@ img {
 }
 
 .navlink {
+
     &:hover,
     &:active {
-        color: $primary-clr;
+        color: $primary-clr-5;
     }
 
     &.active {
-        color: $primary-clr;
+        color: $primary-clr-5;
     }
 }
 
@@ -110,7 +111,7 @@ img {
         left: 0;
         height: 2px;
         width: 0px;
-        background-color: $primary-clr;
+        background-color: $primary-clr-5;
         transition: all 0.1s;
     }
 
@@ -239,7 +240,7 @@ button {
 .breadcrumb {
     padding: 3px;
     margin-top: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 4rem;
     display: flex;
     align-items: center;
 
@@ -254,7 +255,7 @@ button {
         border-bottom: 1px solid transparent;
 
         &:hover {
-            border-bottom: 1px solid $primary-clr;
+            border-bottom: 1px solid $primary-clr-5;
         }
     }
 

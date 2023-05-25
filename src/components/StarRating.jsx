@@ -15,5 +15,5 @@ export const StarRating = (stars) => {
             </span>
         );
     });
-    return <>{tempStars}</>;
+    return <div>{tempStars}</div>;
 };

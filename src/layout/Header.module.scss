@@ -104,7 +104,7 @@
     border-radius: 50%;
     font-size: 1.4rem;
     color: white;
-    background-color: $primary-clr;
+    background-color: $primary-clr-5;
 }
 
 .btn,
@@ -116,7 +116,7 @@
 
     &:hover {
         svg {
-            fill: $primary-clr;
+            fill: $primary-clr-5;
         }
     }
 

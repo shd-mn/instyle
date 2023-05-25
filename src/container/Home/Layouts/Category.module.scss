@@ -6,7 +6,6 @@
     position: relative;
     gap: 2rem;
     overflow: hidden;
-    opacity: 0;
     transition: all 0.5s;
     scroll-behavior: smooth;
 }
@@ -30,7 +29,7 @@
     cursor: pointer;
     pointer-events: all;
     &:hover {
-        color: $primary-clr;
+        color: $primary-clr-5;
     }
     &:disabled {
         cursor: auto;

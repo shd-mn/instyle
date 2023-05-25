@@ -1,4 +1,5 @@
 @use '../scss/' as *;
+
 .product-card {
     width: 28rem;
     flex-shrink: 0;
@@ -9,8 +10,10 @@
             opacity: 1;
             bottom: 3rem;
             transition: all 0.2s;
+
             .btn {
                 transition: all 0.1s, transform 0.3s;
+
                 &:nth-child(1) {
                     transform: translateY(0);
                 }
@@ -62,7 +65,7 @@
         cursor: pointer;
 
         &:hover {
-            background: $primary-clr;
+            background: $primary-clr-5;
             color: $white-clr;
         }
 
@@ -81,9 +84,10 @@
 
     .active {
         color: $white-clr;
-        background-color: $primary-clr-300;
+        background-color: $primary-clr-3;
     }
 }
+
 .product-text-box {
     display: flex;
     flex-direction: column;
@@ -103,7 +107,7 @@
     top: 1rem;
     left: 1rem;
     font-size: 1.4rem;
-    background: $primary-clr;
+    background: $primary-clr-5;
     color: $white-clr;
     border-radius: 5px;
     padding: 5px;
