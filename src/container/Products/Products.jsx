@@ -7,15 +7,14 @@ import styles from './Products.module.scss';
 import CardSkeleton from '../../layout/CardSkeleton';
 const Products = ({ category }) => {
     const { isChecked } = useMyContext();
-
     const {
         data: products,
         isLoading,
         error,
-    } = useFetch('products', '*', `category=eq.${category}`, '0-17');
+    } = useFetch('products', '*', `&category=eq.${category}`, '0-17');
     // & price=gt.90 & price=lte.138
 
-    const filtered = products.filter((item) => {
+    const filtered = products?.filter((item) => {
         const { color, size } = isChecked;
 
         return (

@@ -1,21 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export const useFetch = (endpoint, select, filter, page) => {
+export const useFetch = (endpoint, select, filter = '', page = '') => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState('');
-    let API = '';
-    if (filter) {
-        API = `${process.env.REACT_APP_API}/${endpoint}?select=${select}&${filter}`;
-    } else {
-        API = `${process.env.REACT_APP_API}/${endpoint}?select=${select}`;
-    }
-
-    let range = '';
-    if (page) {
-        range = page;
-    }
+    const [error, setError] = useState(null);
+    let API = `${process.env.REACT_APP_API}/${endpoint}?select=${select}${filter}`;
 
     const getData = async (url) => {
         setIsLoading(true);
@@ -24,7 +14,7 @@ export const useFetch = (endpoint, select, filter, page) => {
                 headers: {
                     apikey: process.env.REACT_APP_API_KEY,
                     Authorization: 'Bearer ' + process.env.REACT_APP_API_KEY,
-                    Range: range,
+                    Range: page,
                 },
             });
             setData(result.data);
