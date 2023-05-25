@@ -6,10 +6,12 @@ const CategoryNav = ({ sectionTitle, selected, handleCategory }) => {
             <div className={styles['section-title']}>
                 <h3>{sectionTitle}</h3>
             </div>
-            <CategoryButtons
-                selected={selected}
-                handleCategory={handleCategory}
-            />
+            {sectionTitle !== 'Related Products' && (
+                <CategoryButtons
+                    selected={selected}
+                    handleCategory={handleCategory}
+                />
+            )}
         </div>
     );
 };
