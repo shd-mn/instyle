@@ -1,17 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
-
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+import { useEffect, useState } from 'react';
 import ProductCard from '../../../layout/ProductCard';
 import CategoryNav from './CategoryNav';
 import CardSkeleton from '../../../layout/CardSkeleton';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import styles from './Category.module.scss';
 
 const Category = ({ products, isLoading, sectionTitle }) => {
     const [selected, setSelected] = useState('all');
+    const [sliderItem, setSliderItem] = useState(0);
+    const [sliderCount, setSliderCount] = useState(4);
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [isEnd, setIsEnd] = useState(false);
-    const [isStart, setIsStart] = useState(false);
-    const [hasScroll, setHasScroll] = useState(true);
-    const container = useRef();
+    const [isStart, setIsStart] = useState(true);
 
     const filteredProduct =
         selected === 'all'
@@ -21,54 +21,51 @@ const Category = ({ products, isLoading, sectionTitle }) => {
     const handleCategory = (e, str) => {
         e.preventDefault();
         setSelected(str);
+        setSliderItem(0);
     };
-
-    const isScrollStart = () => container.current.scrollLeft === 300;
-    const isScrollEnd = () =>
-        container.current.scrollLeft + container.current.offsetWidth ===
-        container.current.scrollWidth - 300;
 
     const handlePrevProducts = () => {
-        if (hasScroll) {
-            container.current.scrollLeft -= '300';
-            setIsEnd(false);
-            if (isScrollStart()) {
-                setIsStart(true);
-            }
-        }
+        setSliderItem((prev) => prev - 1);
     };
     const handleNextProducts = () => {
-        if (hasScroll) {
-            container.current.scrollLeft += '300';
-            setIsStart(false);
-            if (isScrollEnd()) {
-                setIsEnd(true);
-            }
-        }
+        setSliderItem((prev) => prev + 1);
     };
 
     useEffect(() => {
-        if (filteredProduct.length > 4) {
-            setHasScroll(true);
+        if (filteredProduct.length < sliderCount) {
             setIsStart(true);
-            setIsEnd(false);
-            if (container.current.scrollLeft > 0) {
-                container.current.scrollLeft = 0;
+            setIsEnd(true);
+        } else {
+            if (sliderItem > 0) {
+                setIsStart(false);
+            } else {
+                setIsStart(true);
+            }
+
+            if (sliderItem + sliderCount >= filteredProduct.length) {
+                setIsEnd(true);
+            } else {
                 setIsEnd(false);
             }
-        } else {
-            setHasScroll(false);
         }
-    }, [filteredProduct.length, selected]);
+    }, [sliderItem, sliderCount, filteredProduct.length]);
 
     useEffect(() => {
-        container.current.style.opacity = '0';
-        const timeout = setTimeout(() => {
-            container.current.style.opacity = '1';
-        }, 300);
+        const handleResize = () => {
+            setScreenWidth(window.innerWidth);
+            if (screenWidth >= 1280) {
+                setSliderCount(4);
+            } else if (window.innerWidth < 1280) {
+                setSliderCount(3);
+            }
+        };
 
-        return () => clearTimeout(timeout);
-    }, [selected]);
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [screenWidth]);
 
     return (
         <section>
@@ -78,20 +75,20 @@ const Category = ({ products, isLoading, sectionTitle }) => {
                     selected={selected}
                     handleCategory={handleCategory}
                 />
-                <div ref={container} className={styles['product-category']}>
-                    {isLoading && <CardSkeleton count={4} />}
-                    {filteredProduct.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
+                <div className={styles['product-category']}>
+                    {isLoading && <CardSkeleton count={sliderCount} />}
+                    {filteredProduct
+                        .slice(sliderItem, sliderItem + sliderCount)
+                        .map((product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))}
                 </div>
                 <div className={styles['slider-button-group']}>
                     <button
                         className={styles['slider-btn']}
                         type="button"
-                        onClick={() => {
-                            handlePrevProducts();
-                        }}
-                        disabled={isStart || !hasScroll}
+                        onClick={() => handlePrevProducts()}
+                        disabled={isStart}
                     >
                         <span>
                             <HiOutlineChevronLeft />
@@ -101,10 +98,8 @@ const Category = ({ products, isLoading, sectionTitle }) => {
                     <button
                         className={styles['slider-btn']}
                         type="button"
-                        onClick={() => {
-                            handleNextProducts();
-                        }}
-                        disabled={isEnd || !hasScroll}
+                        onClick={() => handleNextProducts()}
+                        disabled={isEnd}
                     >
                         <span>
                             <HiOutlineChevronRight />
