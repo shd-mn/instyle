@@ -35,10 +35,12 @@ function Slider() {
                         <div className={styles['slider-text-box']}>
                             <h2
                                 className={
-                                    styles[changeSlide(itemIndex, index) ===
-                                    'activeSlide'
-                                        ? 'h2animation'
-                                        : null]
+                                    styles[
+                                        changeSlide(itemIndex, index) ===
+                                        'activeSlide'
+                                            ? 'h2animation'
+                                            : null
+                                    ]
                                 }
                             >
                                 COLLECTION
@@ -94,7 +96,7 @@ const SliderButtons = ({ index, setIndex }) => {
                 return (
                     <button
                         key={item.id}
-                        className={`${styles['slider-btn']} ${styles.activeBtn}`}
+                        className={`${styles['slider-btn']} ${styles[activeBtn]}`}
                         onClick={() => setIndex(itemIndex)}
                     ></button>
                 );

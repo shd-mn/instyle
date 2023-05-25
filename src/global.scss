@@ -83,7 +83,6 @@ img {
 }
 
 .navlink {
-
     &:hover,
     &:active {
         color: $primary-clr-5;
@@ -100,7 +99,7 @@ img {
     padding: 5px;
     flex-shrink: 0;
     display: inline-block;
-    color: $black;
+    color: $text-grey-1;
     position: relative;
 
     &::after {
@@ -133,7 +132,7 @@ button {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 2.2rem;
     font-weight: 700;
-    color: $black;
+    color: $text-grey-1;
     padding: 5px 0;
     position: relative;
 
@@ -144,13 +143,16 @@ button {
         left: 0;
         height: 3px;
         width: 30px;
-        background-color: $black;
+        background-color: $text-grey-1;
         animation: buttonHoverExit 0.2s ease-out;
     }
 
     &:hover {
+        color: $primary-clr-5;
         &::after {
+            background-color: $primary-clr-5;
             width: 100%;
+            color: $primary-clr-5;
             animation: buttonHover 0.2s ease-out;
         }
     }
