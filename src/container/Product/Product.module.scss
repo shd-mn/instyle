@@ -1,0 +1,183 @@
+@use '../../scss/' as *;
+
+.product-info {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 4rem;
+    position: relative;
+    margin-bottom: 8rem;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .product-name {
+        letter-spacing: 0.1rem;
+        color: $text-grey-1;
+    }
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+
+    span {
+        color: $text-grey-5;
+        margin-right: 5px;
+    }
+}
+
+.price {
+    font-size: 2.4rem;
+    color: $primary-clr-5;
+
+    span {
+        opacity: 0.5;
+        text-decoration: line-through;
+        margin-right: 10px;
+        color: $black;
+    }
+}
+
+.description {
+    color: $text-grey-3;
+    line-height: 2;
+}
+
+.specs {
+    li {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+
+        h4 {
+            color: $text-grey-3;
+            width: 10rem;
+        }
+
+        p {
+            display: flex;
+        }
+    }
+}
+
+.color {
+    display: inline-block;
+    border: none;
+    border-radius: 50%;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 10px;
+}
+
+.size {
+    padding: 3px 8px;
+    border: 1px solid $text-grey-7;
+    margin-right: 10px;
+    border-radius: $btn-b-radius;
+
+    &:hover {
+        border: 1px solid $primary-clr-3;
+    }
+}
+
+.size.active {
+    border: 2px solid $primary-clr-5;
+}
+
+.order {
+    display: flex;
+    align-items: center;
+
+    button {
+        height: 5rem;
+    }
+
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+        margin-right: 2rem;
+
+        button {
+            border: 1px solid $dark-gray;
+            height: 2.5rem;
+            width: 5rem;
+
+            svg {
+                font-size: 2rem;
+                font-weight: 600;
+            }
+
+            &:hover {
+                background-color: $primary-clr-5;
+                color: $white-clr;
+            }
+        }
+    }
+
+    input[type='number'] {
+        width: 8rem;
+        height: 5rem;
+        border: 1px solid $dark-gray;
+        border-radius: $btn-b-radius;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.8rem;
+        color: $text-grey-1;
+
+        /* Firefox */
+        -moz-appearance: textfield;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .add {
+        width: 40%;
+        padding: 0 2rem;
+        font-size: 1.7rem;
+
+        font-weight: 600;
+        background-color: $primary-clr-5;
+        border: 1px solid $primary-clr-5;
+        border-radius: $btn-b-radius;
+        color: white;
+        margin-right: 2rem;
+
+        &:hover {
+            background-color: $primary-clr-4;
+        }
+    }
+
+    .fav {
+        width: 5rem;
+        border: 1px solid $dark-gray;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: $btn-b-radius;
+
+        svg {
+            font-size: 2.4rem;
+        }
+
+        &:hover {
+            background-color: $primary-clr-5;
+            color: $white-clr;
+            border: 1px solid transparent;
+        }
+    }
+}

@@ -21,7 +21,7 @@
             left: 0;
             height: 3px;
             width: 0px;
-            background-color: $primary-clr;
+            background-color: $primary-clr-5;
             transition: all 0.2s;
         }
 
@@ -46,10 +46,12 @@
 
     .desc {
         max-width: 40%;
+
         p {
             font-size: 1.6rem;
         }
     }
+
     li {
         display: flex;
         align-items: center;
@@ -72,14 +74,17 @@
 
     .reviews {
         margin-bottom: 4rem;
+
         .stars {
             display: flex;
             align-items: center;
             gap: 4rem;
+
             h5 {
                 color: gray;
             }
         }
+
         .comment {
             color: gray;
             font-size: 1.4rem;
