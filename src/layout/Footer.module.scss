@@ -1,0 +1,106 @@
+@use '../scss/' as *;
+
+.footer {
+    width: 100%;
+    height: 45rem;
+    color: $white-clr;
+    background: $black-clr;
+    padding-top: 6rem;
+
+}
+
+.content {
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: 3fr 2fr 2fr 3fr;
+
+    .logo {
+        h1 {
+            margin-bottom: 2rem;
+        }
+        p {
+            width: 80%;
+            font-size: 1.4rem;
+            line-height: 2;
+            opacity: 0.8;
+        }
+    }
+
+    ul {
+        li {
+            margin-bottom: 2rem;
+            color: $text-grey-9;
+
+            &:first-child {
+                margin-bottom: 3rem;
+            }
+
+            a {
+                &:hover {
+                    color: $primary-clr-5;
+                }
+            }
+        }
+    }
+}
+
+.newsletter {
+    .subscribe {
+        position: relative;
+        margin-bottom: 2rem;
+        input {
+            background: none;
+            width: 100%;
+            height: 4rem;
+            border-radius: 2rem;
+            border: 1px solid $white-clr;
+            outline: none;
+            padding-left: 2rem;
+            color: $white-clr;
+
+            &:focus {
+                border: 1px solid $primary-clr-5;
+            }
+        }
+
+        button {
+            max-width: 40%;
+            min-width: 3.2rem;
+            padding: 1rem;
+            height: 3.2rem;
+            position: absolute;
+            font-weight: 500;
+            top: 0.4rem;
+            right: 0.4rem;
+            border-radius: 1.6rem;
+            z-index: 10;
+            color: $white-clr;
+            background-color: $primary-clr-5;
+
+            &:hover {
+                background-color: $primary-clr-7;
+            }
+        }
+    }
+}
+
+.social {
+    display: flex;
+    gap: 2rem;
+
+    a {
+        background-color: $light-gray;
+        width: 3rem;
+        height: 3rem;
+        color: $text-grey-1;
+        padding: 1rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            font-size: 1.8rem;
+        }
+    }
+}
