@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { FaShopify } from 'react-icons/fa';
+import { links } from '../utils/constants';
+import { NavLink, Link } from 'react-router-dom';
+import { useMyContext } from '../context/MainContext';
 import {
     AiOutlineSearch,
     AiOutlineUser,
@@ -8,91 +10,98 @@ import {
     AiOutlineMenu,
     AiOutlineClose,
 } from 'react-icons/ai';
-import { NavLink } from 'react-router-dom';
-
+import { FaShopify } from 'react-icons/fa';
+import Search from '../components/Search';
 import styles from './Header.module.scss';
-import { useMyContext } from '../context/MainContext';
 
 function Header() {
-    const [showMobileNav, setShowMobileNav] = useState(false);
-    const { cart, wishlist } = useMyContext();
+    const [isSearchActive, setIsSearchActive] = useState(false);
+    const [search, setSearch] = useState('');
+    const { cart, wishlist, closeSidebar, showSidebar, isSidebarShow } =
+        useMyContext();
+
+    const handleSearch = () => {
+        setIsSearchActive(!isSearchActive);
+        closeSidebar()
+    };
+
+    const closeSearch = () => {
+        setIsSearchActive(false);
+        setSearch('');
+    };
+
     return (
         <header className={styles.header}>
             <div className={styles.container}>
-                <div>
-                    <a href="/" className={styles.logo}>
+                <Search
+                    search={search}
+                    setSearch={setSearch}
+                    closeSearch={closeSearch}
+                    isSearchActive={isSearchActive}
+                />
+                <div className={styles.navbar}>
+                    <Link
+                        to="/"
+                        className={styles.logo}
+                        onClick={() => closeSidebar()}
+                    >
                         <FaShopify style={{ fontSize: '4.6rem' }} />
                         <h3>SHOPPING</h3>
-                    </a>
-                </div>
-                <div
-                    className={`${
-                        showMobileNav ? styles['mobile-navbar'] : styles.navbar
-                    }`}
-                >
-                    <nav className={styles.menu}>
-                        <NavLink className="navlink" to="/">
-                            Home
-                        </NavLink>
-                        <NavLink className="navlink" to="/women">
-                            Women
-                        </NavLink>
-                        <NavLink className="navlink" to="/men">
-                            Men
-                        </NavLink>
-                        <NavLink className="navlink" to="/baby">
-                            Baby Collection
-                        </NavLink>
-                        <NavLink className="navlink" to="/news">
-                            News
-                        </NavLink>
+                    </Link>
+
+                    <nav>
+                        {links.map((item) => (
+                            <NavLink
+                                key={item.id}
+                                className="navlink"
+                                to={item.url}
+                                onClick={() => closeSidebar()}
+                            >
+                                {item.text}
+                            </NavLink>
+                        ))}
                     </nav>
-                    <div className={styles.action}>
-                        <a href="/" className={styles.link}>
-                            <AiOutlineSearch
-                                style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
-                            />
-                        </a>
-                        <a href="/account" className={styles.link}>
-                            <AiOutlineUser
-                                style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
-                            />
-                        </a>
-                        <a href="/wishlist" className={styles.link}>
-                            <AiOutlineHeart
-                                style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
-                            />
-                            <span className={styles.badge}>
-                                {wishlist.length}
-                            </span>
-                        </a>
-                        <a href="/cart" className={styles.link}>
-                            <AiOutlineShoppingCart
-                                style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
-                            />
-                            <span className={styles.badge}>{cart.length}</span>
-                        </a>
+
+                    <div>
                         <button
-                            className={`${styles.btn} ${styles['close-btn']}`}
-                            onClick={() => setShowMobileNav(false)}
+                            className={styles['search-btn']}
+                            onClick={() => handleSearch()}
                         >
-                            <AiOutlineClose
-                                style={{
-                                    fontSize: '2.8rem',
-                                    color: '#3f3f3f',
-                                }}
-                            />
+                            <AiOutlineSearch />
                         </button>
+                        {isSidebarShow ? (
+                            <button
+                                className={styles['close-btn']}
+                                onClick={() => closeSidebar()}
+                            >
+                                <AiOutlineClose />
+                            </button>
+                        ) : (
+                            <button
+                                className={styles['menu-btn']}
+                                onClick={() => showSidebar()}
+                            >
+                                <AiOutlineMenu />
+                            </button>
+                        )}
+                    </div>
+                    <div
+                        className={styles.action}
+                        onClick={() => closeSidebar()}
+                    >
+                        <Link to="/account" className={styles.link}>
+                            <AiOutlineUser />
+                        </Link>
+                        <Link to="/wishlist" className={styles.link}>
+                            <AiOutlineHeart />
+                            <span className="badge">{wishlist.length}</span>
+                        </Link>
+                        <Link to="/cart" className={styles.link}>
+                            <AiOutlineShoppingCart />
+                            <span className="badge">{cart.length}</span>
+                        </Link>
                     </div>
                 </div>
-                <button
-                    className={styles.btn}
-                    onClick={() => setShowMobileNav(true)}
-                >
-                    <AiOutlineMenu
-                        style={{ fontSize: '2.4rem', color: '#3f3f3f' }}
-                    />
-                </button>
             </div>
         </header>
     );
