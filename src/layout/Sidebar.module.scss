@@ -1,0 +1,65 @@
+@use '../scss/' as *;
+.sidebar {
+    width: 30rem;
+    height: 100%;
+    background: $light-gray;
+    position: absolute;
+    z-index: 50;
+    right: -30rem;
+    transition: all 0.3s;
+    visibility: visible;
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+    padding-left: 2rem;
+    @include lg {
+        display: none;
+    }
+
+    a {
+        font-weight: 500;
+        &:hover {
+            color: $primary-clr-5;
+        }
+    }
+
+    .action {
+        padding-top: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        margin-bottom: 3rem;
+
+        .link {
+            position: relative;
+            font-size: 2.4rem;
+        }
+
+        @include xl {
+            gap: 2rem;
+        }
+    }
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+.show {
+    @include lg {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+        pointer-events: all;
+        right: 0;
+    }
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 49;
+    background: red;
+}

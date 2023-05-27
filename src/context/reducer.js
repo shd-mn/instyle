@@ -7,6 +7,7 @@ import {
     GET_WISHLIST,
     TOGGLE_FILTER,
     ADD_TO_CART,
+    SHOW_SIDEBAR,
 } from './actions';
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -98,6 +99,9 @@ export const reducer = (state, action) => {
             }
 
             return { ...state, isChecked: filter };
+        }
+        case SHOW_SIDEBAR: {
+            return { ...state, isSidebarShow: action.payload };
         }
         default:
             throw new Error('Unsupported action type');

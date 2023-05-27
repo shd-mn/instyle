@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './layout/Header';
+import Sidebar from './layout/Sidebar';
 import Home from './pages/Home';
 import Women from './pages/Women';
 import SingleProduct from './pages/SingleProduct';
@@ -14,6 +15,7 @@ function App() {
     return (
         <Router>
             <Header />
+            <Sidebar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/women">
