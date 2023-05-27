@@ -63,7 +63,7 @@ const ProductInfo = ({ product }) => {
                         <h2 className={styles['product-name']}>{name}</h2>
                         <div className={styles.rating}>
                             {StarRating(4.5)}{' '}
-                            <span>(100 customer rewiews)</span>
+                            <span>(100 rewiews)</span>
                         </div>
                         <h3 className={styles.price}>
                             {sale < 0 && (

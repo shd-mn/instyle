@@ -2,7 +2,10 @@
 $black-clr: #000;
 $white-clr: #fff;
 
+$text-clr: #2e2e2e;
+
 $light-gray: #f8f8f8;
+$gray: #d4d4d4;
 $dark-gray: #7c7c7c;
 
 $primary-clr-1: #991213;
@@ -29,7 +32,7 @@ $text-grey-10: #f1f5f8;
 
 // Border Radius
 $btn-b-radius: 3px;
-$b-radius: 3px;
+$b-radius: 6px;
 
 @mixin text-sm {
     @media (max-width: 40em) {

@@ -27,6 +27,7 @@ body {
     font-size: 1.6rem;
     line-height: 1;
     font-weight: 400;
+    color: #2e2e2e;
 }
 
 .container {
@@ -47,6 +48,8 @@ a {
 
 .navlink {
     padding: 5px;
+    // font-size: 1.6rem;
+    font-weight: 600;
 }
 
 .h1 {
@@ -160,6 +163,21 @@ button {
 
 .btnanimation {
     animation: textSwipeUp 1.3s ease-out;
+}
+
+.badge {
+    width: 1.8rem;
+    height: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -9px;
+    right: -9px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    color: white;
+    background-color: $primary-clr-5;
 }
 
 // text size
