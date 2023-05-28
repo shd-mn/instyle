@@ -16,6 +16,17 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
     scroll-behavior: smooth;
+
+    @include xl {
+        font-size: 56.25%;
+    }
+    @include lg {
+        font-size: 50%;
+    }
+
+    @include md {
+        font-size: 43.75%;
+    }
 }
 
 body {
@@ -48,12 +59,11 @@ a {
 
 .navlink {
     padding: 5px;
-    // font-size: 1.6rem;
     font-weight: 600;
 }
 
 .h1 {
-    font-size: 7.4rem;
+    font-size: 6rem;
     font-weight: 400;
 }
 
@@ -145,7 +155,7 @@ button {
         bottom: -5px;
         left: 0;
         height: 3px;
-        width: 30px;
+        width: 60px;
         background-color: $text-grey-1;
         animation: buttonHoverExit 0.2s ease-out;
     }

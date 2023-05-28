@@ -3,27 +3,15 @@
         transform: translateY(80px);
         opacity: 0;
     }
-    
-    25%{
+
+    50% {
         transform: translateY(80px);
-        opacity: 0.1;
-        
-    }
-    
-    50%{
-        transform: translateY(80px);
-        // opacity: 0.5;
-        
+        opacity: 0.3;
     }
 
-    70%{
-        
-    }
-    
     100% {
         transform: translateY(0);
         opacity: 1;
-        // bottom: 50%;
     }
 }
 
@@ -31,7 +19,7 @@
     from {
         width: 30px;
     }
-    to{
+    to {
         width: 100%;
     }
 }
@@ -39,7 +27,7 @@
     from {
         width: 100%;
     }
-    to{
+    to {
         width: 30px;
     }
 }
