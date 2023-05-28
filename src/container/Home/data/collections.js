@@ -1,23 +1,23 @@
 export const collections = [
     {
         id: 1,
-        header: 'Exclusive Winter',
+        header: 'New Summer Collection',
         description:
-            "New Modern Stylist Fashionable Women's Wear holder bag holder.",
+            'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos eveniet modi harum!',
         src: require('../../../assets/images/header-slider-img1.png'),
     },
     {
         id: 2,
-        header: 'Exclusive Winter Season',
+        header: "Men's Fashion",
         description:
-            "New Modern Stylist Fashionable Women's Wear bag holder.",
-        src: require('../../../assets/images/header-slider-img2.png'),
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur tempora soluta quae adipisci harum et.',
+        src: require('../../../assets/images/header-slider-img3.png'),
     },
     {
         id: 3,
-        header: 'Exclusive Winter',
+        header: "Women's Fashion",
         description:
-            "New Modern Stylist Women's Wear bag holder.",
-        src: require('../../../assets/images/header-slider-img3.png'),
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+        src: require('../../../assets/images/header-slider-img2.png'),
     },
 ];
