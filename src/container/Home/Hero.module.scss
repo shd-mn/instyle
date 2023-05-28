@@ -2,43 +2,46 @@
 
 .hero-section {
     width: 100%;
-    height: 64rem;
+    height: 76rem;
     margin-bottom: 6rem;
     background-size: cover;
     position: relative;
+    right: 0;
     overflow: hidden;
 
-    .hero-bg-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
+    @include xl2 {
+        height: 68rem;
+    }
+
+    @include lg {
+        height: 60rem;
+    }
+    @include md {
+        height: 52rem;
+    }
+    @include md {
+        height: 44rem;
     }
 }
 
 // Slider
 .slider {
     width: 100%;
-    margin: 0 auto;
-    padding: 0 250px;
+    height: 100%;
     opacity: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     transition: all 0.5s linear;
     position: absolute;
     top: 0;
     left: 0;
+
+    display: flex;
+    align-items: center;
 }
 
 .activeSlide {
     opacity: 1;
     transform: translateX(0);
 }
-
 .nextSlide {
     transform: translateX(100%);
 }
@@ -47,17 +50,42 @@
     transform: translateX(-100%);
 }
 
+.slider-img-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    img {
+        object-fit: cover;
+    }
+}
 .slider-text-box {
+    // background-color: aqua;
     width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    // display: flex;
+    margin-left: 30rem;
+    text-align: center;
+    text-align: start;
+
+    @include xl2 {
+        margin-left: 20rem;
+    }
+    @include xl {
+        margin-left: 15rem;
+    }
+    @include lg {
+        margin-left: 10rem;
+    }
+    @include sm {
+        margin-left: 5rem;
+    }
 
     h2 {
-        font-size: 3rem;
-        font-weight: 300;
-        letter-spacing: 1.4rem;
-        margin-bottom: 36px;
+        font-size: 2rem;
+        font-weight: 400;
+        letter-spacing: 1.1rem;
+        margin-bottom: 2.8rem;
     }
 
     .h2animation {
@@ -65,8 +93,18 @@
     }
 
     h1 {
-        margin-bottom: 36px;
+        font-size: 5.4rem;
+        margin-bottom: 2.8rem;
         margin-left: -5px;
+        width: 70%;
+
+        @include lg {
+            font-size: 4.6rem;
+        }
+
+        @include md {
+            font-size: 3.6rem;
+        }
     }
 
     .h1animation {
@@ -74,29 +112,49 @@
     }
 
     .description {
-        max-width: 60%;
-        margin-bottom: 36px;
+        font-size: 1.8rem;
+        width: 50%;
+        margin-bottom: 4rem;
     }
 
     .descAnimation {
         animation: textSwipeUp 1.2s ease-out;
     }
-}
 
-.slider-img-box {
-    width: 50%;
-    height: 760px;
-
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+    .btnAnimation {
+        animation: textSwipeUp 1.3s ease-out;
     }
 }
 
+.next,
+.prev {
+    position: absolute;
+    width: 4rem;
+    height: 10rem;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 0;
+    background-color: $black-clr;
+    opacity: 0.1;
+    border-radius: 5px;
+    &:hover {
+        background-color: $primary-clr-5;
+    }
+    svg {
+        font-size: 4rem;
+        color: $white-clr;
+    }
+    @include md {
+        display: none;
+    }
+}
+
+.prev {
+    left: 0;
+}
 .slider-btn-group {
     position: absolute;
-    bottom: 10px;
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -111,6 +169,7 @@
         opacity: 0.2;
 
         &:hover {
+            border: 1px solid transparent;
             background-color: $primary-clr-3;
             opacity: 0.6;
         }

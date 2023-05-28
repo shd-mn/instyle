@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { collections } from './data/collections.js';
-import styles from './Hero.module.scss';
 import { ParseHeader } from './utils/ParseHeader.js';
 import { changeSlide } from './utils/changeSlide.js';
+import { Link } from 'react-router-dom';
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+
+import styles from './Hero.module.scss';
 function Slider() {
     const [index, setIndex] = useState(0);
 
@@ -13,11 +16,28 @@ function Slider() {
                 if (prevIndex > collections.length - 1) {
                     prevIndex = 0;
                 }
+
                 return prevIndex;
             });
         }, 5000);
         return () => clearInterval(interval);
     }, [index]);
+
+    const handlePrevSlide = () => {
+        if (index > 0) {
+            setIndex(index - 1);
+        } else {
+            setIndex(collections.length - 1);
+        }
+    };
+
+    const handleNextSlide = () => {
+        if (index < collections.length - 1) {
+            setIndex(index + 1);
+        } else {
+            setIndex(0);
+        }
+    };
 
     return (
         <>
@@ -32,6 +52,16 @@ function Slider() {
                         }`}
                         id={'slider' + id}
                     >
+                        <figure className={styles['slider-img-box']}>
+                            <img src={src} alt={header} />
+                        </figure>
+                        <button
+                            className={styles.prev}
+                            type="button"
+                            onClick={() => handlePrevSlide()}
+                        >
+                            <HiOutlineChevronLeft />
+                        </button>
                         <div className={styles['slider-text-box']}>
                             <h2
                                 className={
@@ -45,7 +75,19 @@ function Slider() {
                             >
                                 COLLECTION
                             </h2>
-                            {ParseHeader(header, itemIndex)}
+                            <h1
+                                className={`h1 ${
+                                    styles[
+                                        changeSlide(itemIndex, index) ===
+                                        'activeSlide'
+                                            ? 'h1animation'
+                                            : null
+                                    ]
+                                }`}
+                            >
+                                {ParseHeader(header, itemIndex)}
+                            </h1>
+
                             <p
                                 className={`${styles.description} ${
                                     styles[
@@ -58,26 +100,30 @@ function Slider() {
                             >
                                 {description}
                             </p>
-                            <a
-                                href="#ff"
+                            <Link
+                                to="/women"
                                 className={`btn ${
                                     styles[
                                         changeSlide(itemIndex, index) ===
                                         'activeSlide'
-                                            ? 'btnanimation'
+                                            ? 'btnAnimation'
                                             : null
                                     ]
                                 }`}
                             >
                                 SHOP NOW
-                            </a>
+                            </Link>
                         </div>
-                        <figure className={styles['slider-img-box']}>
-                            <img src={src} alt="winter collections" />
-                        </figure>
                     </article>
                 );
             })}
+            <button
+                className={styles.next}
+                type="button"
+                onClick={() => handleNextSlide()}
+            >
+                <HiOutlineChevronRight />
+            </button>
 
             <SliderButtons index={index} setIndex={setIndex} />
         </>
