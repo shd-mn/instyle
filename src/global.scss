@@ -44,11 +44,13 @@ body {
 .container {
     max-width: 126rem;
     margin: 0 auto;
-    margin-bottom: 6rem;
     padding: 0 4rem;
+    margin-bottom: 8rem;
 
-    @include xl {
-        max-width: 96rem;
+    @include lg {
+        padding: 0 4rem;
+        // max-width: 97rem;
+        // padding: 0 4rem;
     }
 }
 
@@ -264,7 +266,12 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+
+    @include md {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 
 .breadcrumb {
@@ -292,6 +299,23 @@ button {
     p {
         text-transform: capitalize;
         opacity: 0.7;
+    }
+}
+
+.skeleton-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+
+    @include lg {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include sm {
+        grid-template-columns: 1fr;
     }
 }
 
