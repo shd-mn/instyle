@@ -8,6 +8,11 @@
     box-shadow: 0 0.2rem 10px 0 #c9c9c980;
     position: relative;
     z-index: 100;
+    transition: all 0.3s;
+}
+
+.sticky {
+    position: fixed;
 }
 
 .container {

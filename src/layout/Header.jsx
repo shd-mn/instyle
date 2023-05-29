@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { links } from '../utils/constants';
+
 import { NavLink, Link } from 'react-router-dom';
 import { useMyContext } from '../context/MainContext';
 import {
@@ -17,12 +18,30 @@ import styles from './Header.module.scss';
 function Header() {
     const [isSearchActive, setIsSearchActive] = useState(false);
     const [search, setSearch] = useState('');
+    const [isSticky, setIsSticky] = useState(false);
+
     const { cart, wishlist, closeSidebar, showSidebar, isSidebarShow } =
         useMyContext();
 
+    const intersection = () => {
+        if (window.scrollY >= window.innerHeight) {
+            setIsSticky(true);
+        } else {
+            setIsSticky(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', intersection);
+
+        return () => {
+            window.removeEventListener('scroll', intersection);
+        };
+    });
+
     const handleSearch = () => {
         setIsSearchActive(!isSearchActive);
-        closeSidebar()
+        closeSidebar();
     };
 
     const closeSearch = () => {
@@ -31,7 +50,9 @@ function Header() {
     };
 
     return (
-        <header className={styles.header}>
+        <header
+            className={`${styles.header} ${isSticky ? styles.sticky : null}`}
+        >
             <div className={styles.container}>
                 <Search
                     search={search}
