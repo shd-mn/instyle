@@ -16,37 +16,35 @@ const ProductCard = ({ product }) => {
     const hasWishlist = wishlist.some((item) => item.id === product.id);
 
     return (
-        <Link to={`/${category}/${id}`}>
-            <article className={styles['product-card']}>
-                <figure className={styles['img-box']}>
-                    <img src={url[0]} alt={name} />
-                    <div className={styles['button-group']}>
-                        <button
-                            className={`${styles.btn} ${
-                                hasCart && styles.active
-                            }`}
-                            type="button"
-                            onClick={(e) => toggleCart(e, product)}
-                        >
-                            <IoCartOutline size={'20px'} />
-                        </button>
-                        <button
-                            className={`${styles.btn} ${
-                                hasWishlist && styles.active
-                            }`}
-                            type="button"
-                            onClick={(e) => toggleWishlist(e, product)}
-                        >
-                            <IoHeartOutline size={'20px'} />
-                        </button>
-                        <button className={styles.btn} type="button">
-                            <IoResizeOutline size={'20px'} />
-                        </button>
-                    </div>
-                    {sale !== 0 && (
-                        <div className={styles.badge}>{sale.toFixed(2)}</div>
-                    )}
-                </figure>
+        <article className={styles['product-card']}>
+            <figure className={styles['img-box']}>
+                <img src={url[0]} alt={name} />
+                <div className={styles['button-group']}>
+                    <button
+                        className={`${styles.btn} ${hasCart && styles.active}`}
+                        type="button"
+                        onClick={(e) => toggleCart(e, product)}
+                    >
+                        <IoCartOutline />
+                    </button>
+                    <button
+                        className={`${styles.btn} ${
+                            hasWishlist && styles.active
+                        }`}
+                        type="button"
+                        onClick={(e) => toggleWishlist(e, product)}
+                    >
+                        <IoHeartOutline />
+                    </button>
+                    <button className={styles.btn} type="button">
+                        <IoResizeOutline />
+                    </button>
+                </div>
+                {sale !== 0 && (
+                    <div className={styles.badge}>{sale.toFixed(2)}</div>
+                )}
+            </figure>
+            <Link to={`/${category}/${id}`}>
                 <div className={styles['product-text-box']}>
                     <h5>{name}</h5>
                     <p className={styles['product-price']}>
@@ -58,8 +56,8 @@ const ProductCard = ({ product }) => {
                         {currency === 'USD' ? '$' : '₼'}
                     </p>
                 </div>
-            </article>
-        </Link>
+            </Link>
+        </article>
     );
 };
 export default ProductCard;

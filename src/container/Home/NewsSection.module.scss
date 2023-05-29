@@ -7,8 +7,13 @@
 }
 
 .news {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    @include lg {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }
 
 .news-item {
@@ -17,6 +22,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
+
+    @include lg {
+        margin-bottom: 5rem;
+    }
 
     a,
     a:link,
