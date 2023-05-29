@@ -6,6 +6,10 @@
         background: transparent;
         text-transform: capitalize;
         cursor: pointer;
+
+        @include md {
+            margin-left: 0.5rem;
+        }
     }
 
     .active {
