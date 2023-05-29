@@ -1,0 +1,50 @@
+@use '../../scss/' as *;
+
+.banner-section {
+    width: 100%;
+}
+.row {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.content {
+    height: 25rem;
+    @include lg {
+        height: 20rem;
+    }
+    background-color: $light-gray;
+    position: relative;
+    overflow: hidden;
+
+    img {
+        object-fit: cover;
+        border-radius: $b-radius;
+        transform: scale(1);
+        transition: all 0.3s;
+    }
+
+    .text {
+        position: absolute;
+        bottom: 20%;
+        left: 50%;
+        background-color: $white-clr;
+        padding: 1rem;
+        transform: translateX(-50%);
+        transition: all 0.3s;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    &:hover {
+        .text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        img {
+            transform: scale(1.05);
+        }
+    }
+}
