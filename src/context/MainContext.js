@@ -7,6 +7,7 @@ import {
     TOGGLE_FILTER,
     ADD_TO_CART,
     SHOW_SIDEBAR,
+    CLEAR_FILTER,
 } from './actions';
 import { reducer } from './reducer';
 
@@ -22,6 +23,11 @@ const initialState = {
     isChecked: {
         size: [],
         color: [],
+        subcategory: [],
+    },
+    rangeFilter: {
+        min: 0,
+        max: 0,
     },
 };
 
@@ -66,12 +72,17 @@ const MainProvider = ({ children }) => {
         dispatch({ type: TOGGLE_FILTER, payload: { title, item } });
     };
 
+    const clearFilter = () => {
+        dispatch({ type: CLEAR_FILTER, payload: {} });
+    };
+
     const showSidebar = () => {
         dispatch({ type: SHOW_SIDEBAR, payload: true });
     };
     const closeSidebar = () => {
         dispatch({ type: SHOW_SIDEBAR, payload: false });
     };
+
     const value = {
         ...state,
         dispatch,
@@ -79,6 +90,7 @@ const MainProvider = ({ children }) => {
         addToCart,
         toggleWishlist,
         filterProducts,
+        clearFilter,
         showSidebar,
         closeSidebar,
     };

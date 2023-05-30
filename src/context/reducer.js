@@ -8,6 +8,8 @@ import {
     TOGGLE_FILTER,
     ADD_TO_CART,
     SHOW_SIDEBAR,
+    CLEAR_FILTER,
+    RANGE_FILTER,
 } from './actions';
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -77,7 +79,9 @@ export const reducer = (state, action) => {
             let filter = {};
             let arr = [];
             if (state.isChecked[title]) {
-                if (state.isChecked[title].includes(item)) {
+                if (item === 'all') {
+                    arr = [];
+                } else if (state.isChecked[title].includes(item)) {
                     arr = state.isChecked[title].filter(
                         (value) => value !== item
                     );
@@ -99,6 +103,34 @@ export const reducer = (state, action) => {
             }
 
             return { ...state, isChecked: filter };
+        }
+
+        case RANGE_FILTER: {
+            return {
+                ...state,
+                rangeFilter: {
+                    min: +action.payload.min,
+                    max: +action.payload.max,
+                },
+            };
+        }
+        case CLEAR_FILTER: {
+            const rangeMax = document
+                .querySelector('#range-slider')
+                .getElementsByTagName('input')[1].max;
+
+            return {
+                ...state,
+                isChecked: {
+                    size: [],
+                    color: [],
+                    subcategory: [],
+                },
+                rangeFilter: {
+                    min: 0,
+                    max: +rangeMax,
+                },
+            };
         }
         case SHOW_SIDEBAR: {
             return { ...state, isSidebarShow: action.payload };
