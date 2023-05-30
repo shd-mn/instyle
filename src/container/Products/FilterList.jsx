@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 
-import styles from './Products.module.scss';
 import { useMyContext } from '../../context/MainContext';
+import styles from './Products.module.scss';
 const FilterList = ({ title, products }) => {
     const [show, setShow] = useState(true);
 
-    const { filterProducts } = useMyContext();
+    const { filterProducts, isChecked } = useMyContext();
 
     const filterItem = [
         ...new Set(products.flatMap((product) => product[title])),
@@ -22,10 +22,22 @@ const FilterList = ({ title, products }) => {
             </div>
             {show && (
                 <div className={styles.body}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={isChecked[title].length === 0}
+                            onChange={() => {
+                                filterProducts(title, 'all');
+                            }}
+                        />
+                        All
+                    </label>
+
                     {filterItem.map((item) => (
                         <label key={item}>
                             <input
                                 type="checkbox"
+                                checked={isChecked[title].includes(item)}
                                 onChange={() => {
                                     filterProducts(title, item);
                                 }}
