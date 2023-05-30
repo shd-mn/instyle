@@ -1,7 +1,8 @@
 @use '../../scss/' as *;
 
 .hero-section {
-    width: 100%;
+    max-width: 3000px;
+    margin: 0 auto;
     height: 76rem;
     margin-bottom: 6rem;
     background-size: cover;
@@ -21,6 +22,9 @@
     }
     @include md {
         height: 44rem;
+    }
+    @include sm {
+        height: 36rem;
     }
 }
 
@@ -61,9 +65,7 @@
     }
 }
 .slider-text-box {
-    // background-color: aqua;
     width: 50%;
-    // display: flex;
     margin-left: 30rem;
     text-align: center;
     text-align: start;
@@ -79,6 +81,7 @@
     }
     @include sm {
         margin-left: 5rem;
+        width: 100%;
     }
 
     h2 {
@@ -115,6 +118,10 @@
         font-size: 1.8rem;
         width: 50%;
         margin-bottom: 4rem;
+
+        @include sm {
+            display: none;
+        }
     }
 
     .descAnimation {

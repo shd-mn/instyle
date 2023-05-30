@@ -2,7 +2,7 @@ import Products from '../container/Products/Products';
 const Women = () => {
     return (
         <main>
-            <Products category="women" />;
+            <Products category="women" />
         </main>
     );
 };

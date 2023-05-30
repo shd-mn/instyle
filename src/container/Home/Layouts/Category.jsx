@@ -25,7 +25,7 @@ const responsive = {
     },
     sm: {
         breakpoint: { max: 464, min: 0 },
-        items: 1,
+        items: 2,
     },
 };
 
@@ -54,7 +54,7 @@ const Category = ({ products, isLoading, sectionTitle }) => {
                 <Carousel
                     responsive={responsive}
                     containerClass={styles['product-category']}
-                    // removeArrowOnDeviceType={['md', 'sm']}
+                    removeArrowOnDeviceType={['md', 'sm']}
                 >
                     {filteredProduct.map((product) => (
                         <ProductCard key={product.id} product={product} />

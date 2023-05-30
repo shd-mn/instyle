@@ -19,7 +19,6 @@ const Footer = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
         reset({ email: '' });
         setSubscribe(true);
     };

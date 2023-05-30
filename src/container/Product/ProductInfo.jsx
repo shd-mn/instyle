@@ -7,10 +7,11 @@ import Breadcrumb from '../../components/Breadcrumb';
 import ImageGalery from '../../components/ImageGalery';
 import {
     IoHeartOutline,
-    IoCheckmarkSharp,
     IoAddOutline,
     IoRemoveOutline,
 } from 'react-icons/io5';
+import { BsCheck } from 'react-icons/bs';
+
 import styles from './Product.module.scss';
 const ProductInfo = ({ product }) => {
     const { name, description, url, color, size, price, sale } = product;
@@ -51,8 +52,6 @@ const ProductInfo = ({ product }) => {
         addToCart(cartItem);
     };
 
-    console.log(selectedSize);
-
     return (
         <section>
             <div className="container">
@@ -62,8 +61,7 @@ const ProductInfo = ({ product }) => {
                     <div className={styles.content}>
                         <h2 className={styles['product-name']}>{name}</h2>
                         <div className={styles.rating}>
-                            {StarRating(4.5)}{' '}
-                            <span>(100 rewiews)</span>
+                            {StarRating(4.5)} <span>(100 rewiews)</span>
                         </div>
                         <h3 className={styles.price}>
                             {sale < 0 && (
@@ -100,7 +98,7 @@ const ProductInfo = ({ product }) => {
                                         >
                                             {selectedColor === item && (
                                                 <span>
-                                                    <IoCheckmarkSharp color="white" />
+                                                    <BsCheck color="white" />
                                                 </span>
                                             )}
                                         </button>
