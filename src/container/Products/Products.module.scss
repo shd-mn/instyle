@@ -1,26 +1,139 @@
 @use '../../scss/' as *;
 
 .products {
+    min-height: 64rem;
     display: grid;
     grid-template-columns: 1fr 3fr;
     gap: 2rem;
+
+    @include md {
+        grid-template-columns: 1fr;
+    }
 }
 
+.page-title {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    @include md {
+        grid-template-columns: 1fr;
+    }
+}
+
+.search-form {
+    width: 100%;
+    height: 4rem;
+    border-radius: $btn-b-radius;
+    border: 1px solid transparent;
+
+    input {
+        width: 100%;
+        height: 100%;
+        padding-left: 2rem;
+        background: none;
+        border: none;
+        outline: none;
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        border: 1px solid $gray;
+    }
+
+    @include md {
+        border: 1px solid $gray;
+    }
+}
+
+// Sort
+.page-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .btn-group {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+}
+
+.sort {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: $light-gray;
+
+    border: 1px solid $gray;
+    border-radius: $btn-b-radius;
+    height: 4rem;
+    width: 15rem;
+
+    &:hover {
+        background-color: $gray;
+    }
+}
+
+.dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 50;
+
+    button {
+        padding: 0 2rem;
+        width: 100%;
+        height: 4rem;
+        text-align: left;
+        border: 1px solid $gray;
+        background-color: $light-gray;
+
+        &:hover {
+            background-color: $gray;
+        }
+    }
+}
+
+// Filter
 .filter {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
 
+    @include md {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    @include sm {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
     .header {
         width: 100%;
+        height: 4rem;
 
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
+        background: $light-gray;
+        padding: 0 1rem;
+        margin-bottom: 1rem;
 
         h4 {
+            margin-left: 1rem;
             text-transform: capitalize;
+            border-radius: $btn-b-radius;
         }
     }
 
@@ -33,11 +146,75 @@
 
         label {
             padding: 3px;
+            text-transform: capitalize;
 
             input {
                 margin-right: 8px;
             }
         }
+    }
+    .color {
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        span {
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $white-clr;
+            svg {
+                font-size: 2.4rem;
+            }
+            &:first-of-type {
+                border: 1px solid $text-grey-1;
+                color: $black-clr;
+            }
+        }
+    }
+}
+// range
+.price-range {
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        margin-bottom: 3rem;
+    }
+}
+
+.range-body {
+    padding: 0 2rem;
+    margin-bottom: 6rem;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+// Clear Filter
+.clear-filter {
+    padding: 0 2rem;
+    button {
+        width: 100%;
+        margin: 0 auto;
+        height: 4rem;
+        border-radius: $btn-b-radius;
+        color: $white-clr;
+        background: $primary-clr-5;
+    }
+
+    @include md {
+        grid-column: 1/-1;
+        width: 50%;
+        margin: 0 auto;
+        margin-bottom: 3rem;
     }
 }
 
@@ -45,6 +222,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+
+    @include sm {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
-
-
