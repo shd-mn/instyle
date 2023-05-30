@@ -14,7 +14,7 @@ const CategoryBanner = () => {
                             to={item.url}
                             className={styles.content}
                         >
-                            <img src={item.img} alt="" />
+                            <img src={item.img} alt={item.text} />
                             <h4 className={styles.text}>{item.text}</h4>
                         </Link>
                     ))}

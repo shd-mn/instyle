@@ -7,14 +7,25 @@
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(3, 1fr);
+
+    @include lg {
+        grid-template-columns: 1fr;
+    }
 }
 
 .content {
     height: 25rem;
     @include lg {
-        height: 20rem;
+        height: 40rem;
+    }
+    @include md {
+        height: 32rem;
+    }
+    @include sm {
+        height: 24rem;
     }
     background-color: $light-gray;
+    border-radius: $b-radius;
     position: relative;
     overflow: hidden;
 
@@ -27,22 +38,16 @@
 
     .text {
         position: absolute;
-        bottom: 20%;
+        bottom: 30%;
         left: 50%;
         background-color: $white-clr;
-        padding: 1rem;
+        padding: 1.5rem;
+        box-shadow: 2px 2px 2px #cccccc77;
         transform: translateX(-50%);
         transition: all 0.3s;
-        visibility: hidden;
-        opacity: 0;
     }
 
     &:hover {
-        .text {
-            visibility: visible;
-            opacity: 1;
-        }
-
         img {
             transform: scale(1.05);
         }
