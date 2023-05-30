@@ -326,3 +326,18 @@ button {
 .skeleton-text {
     text-align: center;
 }
+
+// Range
+
+.range-slider__range {
+    /* CSS for range */
+    background-color: $primary-clr-5 !important;
+}
+
+.range-slider__thumb {
+    /* CSS for thumbs */
+    background-color: $primary-clr-5 !important;
+    border-radius: 3px !important;
+    width: 2rem !important;
+    height: 2rem !important;
+}
