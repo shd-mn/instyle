@@ -16,13 +16,14 @@ const responsive = {
         items: 4,
     },
     lg: {
-        breakpoint: { max: 1140, min: 640 },
-        items: 3,
+        breakpoint: { max: 1140, min: 768 },
+        items: 4,
     },
     md: {
-        breakpoint: { max: 640, min: 464 },
-        items: 2,
+        breakpoint: { max: 768, min: 464 },
+        items: 3,
     },
+
     sm: {
         breakpoint: { max: 464, min: 0 },
         items: 2,
@@ -54,7 +55,7 @@ const Category = ({ products, isLoading, sectionTitle }) => {
                 <Carousel
                     responsive={responsive}
                     containerClass={styles['product-category']}
-                    removeArrowOnDeviceType={['md', 'sm']}
+                    // removeArrowOnDeviceType={['md', 'sm']}
                 >
                     {filteredProduct.map((product) => (
                         <ProductCard key={product.id} product={product} />

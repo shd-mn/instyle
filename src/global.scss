@@ -49,8 +49,12 @@ body {
 
     @include lg {
         padding: 0 4rem;
-        // max-width: 97rem;
-        // padding: 0 4rem;
+    }
+    @include md {
+        padding: 0 2rem;
+    }
+    @include sm {
+        padding: 0 1rem;
     }
 }
 
@@ -340,4 +344,13 @@ button {
     border-radius: 3px !important;
     width: 2rem !important;
     height: 2rem !important;
+}
+
+// react-multi-carousel-item--active
+.react-multi-carousel-item--active {
+    article {
+        @include xl {
+            margin-right: 2rem;
+        }
+    }
 }
