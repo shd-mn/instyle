@@ -47,6 +47,7 @@ const ProductCard = ({ product }) => {
             <Link to={`/${category}/${id}`}>
                 <div className={styles['product-text-box']}>
                     <h5>{name}</h5>
+                    <div className={styles.info}></div>
                     <p className={styles['product-price']}>
                         {sale < 0 && (
                             <span> {convertCurrency(price, currency)}</span>

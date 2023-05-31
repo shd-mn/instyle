@@ -1,9 +1,7 @@
 @use '../scss/' as *;
 
 .product-card {
-    max-width: 28rem;
     -webkit-user-drag: none;
-
     &:hover {
         .button-group {
             visibility: visible;
@@ -31,8 +29,9 @@
 }
 
 .img-box {
+    max-width: 28rem;
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     overflow: hidden;
     border-radius: $b-radius;
 
@@ -63,10 +62,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        color: $text-grey-3;
         cursor: pointer;
 
         svg {
-            font-size: 20px;
+            font-size: 2rem;
         }
 
         &:hover {
@@ -89,7 +89,7 @@
 
     .active {
         color: $white-clr;
-        background-color: $primary-clr-3;
+        background-color: $primary-clr-4;
     }
 }
 
@@ -104,6 +104,9 @@
             text-decoration: line-through;
             margin-right: 5px;
         }
+    }
+
+    .info {
     }
 }
 
