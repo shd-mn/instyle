@@ -1,8 +1,9 @@
 import { useMyContext } from '../../context/MainContext';
-import FilterList from './FilterList';
-import FilterSkleton from './FilterSkleton';
+import CategoryFilter from './CategoryFilter';
+import SizeFilter from './SizeFilter';
 import ColorFilter from './ColorFilter';
 import PriceRange from './PriceRange';
+import FilterSkleton from './FilterSkleton';
 import styles from './Products.module.scss';
 const Filter = ({ products, isLoading }) => {
     const { clearFilter } = useMyContext();
@@ -15,8 +16,8 @@ const Filter = ({ products, isLoading }) => {
     }
     return (
         <div className={styles.filter}>
-            <FilterList title="subcategory" products={products} />
-            <FilterList title="size" products={products} />
+            <CategoryFilter title="subcategory" products={products} />
+            <SizeFilter title="size" products={products} />
             <ColorFilter title="color" products={products} />
             <PriceRange title="price" products={products} />
 

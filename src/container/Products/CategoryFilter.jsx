@@ -3,7 +3,7 @@ import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi';
 
 import { useMyContext } from '../../context/MainContext';
 import styles from './Products.module.scss';
-const FilterList = ({ title, products }) => {
+const CategoryFilter = ({ title, products }) => {
     const [show, setShow] = useState(true);
 
     const { filterProducts, isChecked } = useMyContext();
@@ -15,13 +15,13 @@ const FilterList = ({ title, products }) => {
     return (
         <div className={styles.accordion}>
             <div className={styles.header} onClick={() => setShow(!show)}>
-                <h4>{title}</h4>
+                <h4>Category</h4>
                 <span>
                     {show ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
                 </span>
             </div>
             {show && (
-                <div className={styles.body}>
+                <div className={styles.category}>
                     <label>
                         <input
                             type="checkbox"
@@ -50,4 +50,4 @@ const FilterList = ({ title, products }) => {
         </div>
     );
 };
-export default FilterList;
+export default CategoryFilter;

@@ -137,7 +137,8 @@
         }
     }
 
-    .body {
+    .category,
+    .size {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -147,14 +148,22 @@
         label {
             padding: 3px;
             text-transform: capitalize;
+            font-weight: 500;
+            color: $text-grey-4;
 
             input {
                 margin-right: 8px;
             }
         }
     }
+
+    .size {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
     .color {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         padding: 0 2rem;
         gap: 1rem;
@@ -163,12 +172,15 @@
             width: 2.4rem;
             height: 2.4rem;
             border-radius: 50%;
+            border: 1px solid $gray;
             display: flex;
             align-items: center;
             justify-content: center;
             color: $white-clr;
             svg {
                 font-size: 2.4rem;
+                stroke: $gray;
+                stroke-width: 1;
             }
             &:first-of-type {
                 border: 1px solid $text-grey-1;
