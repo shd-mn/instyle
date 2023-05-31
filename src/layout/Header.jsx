@@ -18,26 +18,14 @@ import styles from './Header.module.scss';
 function Header() {
     const [isSearchActive, setIsSearchActive] = useState(false);
     const [search, setSearch] = useState('');
-    const [isSticky, setIsSticky] = useState(false);
-
-    const { cart, wishlist, closeSidebar, showSidebar, isSidebarShow } =
-        useMyContext();
-
-    const intersection = () => {
-        if (window.scrollY >= window.innerHeight) {
-            setIsSticky(true);
-        } else {
-            setIsSticky(false);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', intersection);
-
-        return () => {
-            window.removeEventListener('scroll', intersection);
-        };
-    });
+    const {
+        cart,
+        wishlist,
+        closeSidebar,
+        showSidebar,
+        isSidebarShow,
+        isSticky,
+    } = useMyContext();
 
     const handleSearch = () => {
         setIsSearchActive(!isSearchActive);

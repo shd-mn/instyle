@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import {
+    createContext,
+    useContext,
+    useEffect,
+    useReducer,
+    useState,
+} from 'react';
 import {
     TOGGLE_CART,
     GET_CART,
@@ -33,6 +39,7 @@ const initialState = {
 
 const MainProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
+    const [isSticky, setIsSticky] = useState(false);
 
     const toggleCart = (e, product) => {
         e.preventDefault();
@@ -83,8 +90,26 @@ const MainProvider = ({ children }) => {
         dispatch({ type: SHOW_SIDEBAR, payload: false });
     };
 
+    const intersection = () => {
+        closeSidebar();
+        if (window.scrollY >= window.innerHeight) {
+            setIsSticky(true);
+        } else {
+            setIsSticky(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', intersection);
+
+        return () => {
+            window.removeEventListener('scroll', intersection);
+        };
+    });
+
     const value = {
         ...state,
+        isSticky,
         dispatch,
         toggleCart,
         addToCart,
