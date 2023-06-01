@@ -2,6 +2,8 @@
 
 .product-card {
     -webkit-user-drag: none;
+    max-width: 28rem;
+
     &:hover {
         .button-group {
             visibility: visible;
@@ -29,7 +31,6 @@
 }
 
 .img-box {
-    max-width: 28rem;
     position: relative;
     margin-bottom: 1.5rem;
     overflow: hidden;
@@ -96,27 +97,58 @@
 .product-text-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: stretch;
+    padding: 0 1rem;
+    color: $text-grey-1;
 
+    h5 {
+        height: 4rem;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        line-height: 2rem;
+    }
     .product-price {
+        font-weight: 600;
         span {
-            opacity: 0.7;
+            opacity: 0.5;
             text-decoration: line-through;
-            margin-right: 5px;
+            margin-right: 0.8rem;
         }
     }
 
     .info {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: auto;
     }
 }
 
 .badge {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    gap: 0.5rem;
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    padding: 1rem;
+    top: 0;
+
     font-size: 1.4rem;
-    background: $primary-clr-5;
+    letter-spacing: 0.3px;
+
     color: $white-clr;
-    border-radius: 5px;
-    padding: 5px;
+
+    .sale,
+    .new {
+        background: $primary-clr-5;
+        padding: 5px;
+        border-radius: $btn-b-radius;
+    }
+
+    .new {
+        background: green;
+        margin-right: auto;
+    }
 }

@@ -7,9 +7,10 @@ import {
     IoCartOutline,
 } from 'react-icons/io5';
 import styles from './ProductCard.module.scss';
+import { StarRating } from '../components/StarRating';
 
 const ProductCard = ({ product }) => {
-    const { id, name, category, price, sale, url } = product;
+    const { id, name, category, price, sale, url, rating } = product;
     const { currency, cart, toggleCart, wishlist, toggleWishlist } =
         useMyContext();
     const hasCart = cart.some((item) => item.id === product.id);
@@ -40,22 +41,29 @@ const ProductCard = ({ product }) => {
                         <IoResizeOutline />
                     </button>
                 </div>
-                {sale !== 0 && (
-                    <div className={styles.badge}>{sale.toFixed(2)}</div>
-                )}
+
+                <div className={styles.badge}>
+                    {product.new === true && (
+                        <span className={styles.new}>NEW</span>
+                    )}
+                    {sale !== 0 && <span className={styles.sale}>SALE</span>}
+                </div>
             </figure>
             <Link to={`/${category}/${id}`}>
                 <div className={styles['product-text-box']}>
                     <h5>{name}</h5>
-                    <div className={styles.info}></div>
-                    <p className={styles['product-price']}>
-                        {sale < 0 && (
-                            <span> {convertCurrency(price, currency)}</span>
-                        )}
+                    <div className={styles.info}>
+                        {<StarRating stars={rating} />}
+                        <p className={styles['product-price']}>
+                            {sale < 0 && (
+                                <span> {convertCurrency(price, currency)}</span>
+                            )}
 
-                        {convertCurrency(price + sale, currency)}
-                        {currency === 'USD' ? '$' : '₼'}
-                    </p>
+                            {convertCurrency(price + sale, currency)}
+
+                            {currency === 'USD' ? '$' : '₼'}
+                        </p>
+                    </div>
                 </div>
             </Link>
         </article>
