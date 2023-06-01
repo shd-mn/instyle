@@ -22,13 +22,19 @@ const NewsSection = () => {
                             <figure className={styles.figure}>
                                 <img src={item.img[0]} alt={item.title} />{' '}
                             </figure>
+                            <div className={styles.content}>
+                                <h5 className={styles.category}>
+                                    {item.category}
+                                </h5>
 
-                            <h5>{item.category}</h5>
-
-                            <h3>{item.title}</h3>
-                            <Link className="link" to={`/news/${item.id}`}>
-                                Read More
-                            </Link>
+                                <h4 className={styles.title}>{item.title}</h4>
+                                {/* <p className={styles.text}>
+                                    {item.content.substring(0, 120)}...
+                                </p> */}
+                                <Link className="link" to={`/news/${item.id}`}>
+                                    Read More...
+                                </Link>
+                            </div>
                         </article>
                     ))}
                 </div>
