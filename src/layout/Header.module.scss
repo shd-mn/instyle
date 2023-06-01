@@ -6,9 +6,9 @@
 
     background-color: $light-gray;
     box-shadow: 0 0.2rem 10px 0 #c9c9c980;
-    position: relative;
+    position: absolute;
+    top: 0;
     z-index: 100;
-    transition: all 0.3s;
 }
 
 .sticky {
@@ -27,8 +27,16 @@
     align-items: center;
     position: relative;
 
-    @include xl {
-        max-width: 96rem;
+    @include lg {
+        padding: 0 4rem;
+    }
+
+    @include md {
+        padding: 0 2rem;
+    }
+
+    @include sm {
+        padding: 0 1rem;
     }
 
     svg {
