@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { links } from '../utils/constants';
 
 import { NavLink, Link } from 'react-router-dom';
@@ -11,7 +11,6 @@ import {
     AiOutlineMenu,
     AiOutlineClose,
 } from 'react-icons/ai';
-import { FaShopify } from 'react-icons/fa';
 import Search from '../components/Search';
 import styles from './Header.module.scss';
 

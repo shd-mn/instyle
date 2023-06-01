@@ -3,9 +3,9 @@
     button {
         padding: 10px;
         margin-left: 2rem;
+        font-weight: 500;
         background: transparent;
         text-transform: capitalize;
-        cursor: pointer;
 
         @include md {
             margin-left: 0.5rem;

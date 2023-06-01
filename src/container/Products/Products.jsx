@@ -6,7 +6,11 @@ import ProductCard from '../../layout/ProductCard';
 import styles from './Products.module.scss';
 import CardSkeleton from '../../layout/CardSkeleton';
 import { useEffect, useState } from 'react';
-import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5';
+import {
+    IoChevronDownOutline,
+    IoChevronUpOutline,
+    IoSearchOutline,
+} from 'react-icons/io5';
 const Products = ({ category }) => {
     const [sortedProduct, setSortedProduct] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -78,6 +82,9 @@ const Products = ({ category }) => {
                         placeholder="Search..."
                         onChange={(e) => setSearch(e.target.value)}
                     />
+                    <span>
+                        <IoSearchOutline />
+                    </span>
                 </form>
                 <div className={styles['page-info']}>
                     <p>{sortedProduct.length} Products Found</p>

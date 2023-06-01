@@ -1,6 +1,6 @@
 import { IoStarOutline, IoStarHalfOutline, IoStarSharp } from 'react-icons/io5';
 
-export const StarRating = (stars) => {
+export const StarRating = ({stars}) => {
     const tempStars = Array.from({ length: 5 }, (_, index) => {
         const number = index + 0.5;
         return (

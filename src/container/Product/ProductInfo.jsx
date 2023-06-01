@@ -5,16 +5,13 @@ import { useMyContext } from '../../context/MainContext';
 import { StarRating } from '../../components/StarRating';
 import Breadcrumb from '../../components/Breadcrumb';
 import ImageGalery from '../../components/ImageGalery';
-import {
-    IoHeartOutline,
-    IoAddOutline,
-    IoRemoveOutline,
-} from 'react-icons/io5';
+import { IoHeartOutline, IoAddOutline, IoRemoveOutline } from 'react-icons/io5';
 import { BsCheck } from 'react-icons/bs';
 
 import styles from './Product.module.scss';
 const ProductInfo = ({ product }) => {
-    const { name, description, url, color, size, price, sale } = product;
+    const { name, description, url, color, size, price, sale, rating } =
+        product;
     const { addToCart } = useMyContext();
 
     const [selectedColor, setSelectedColor] = useState(color[0]);
@@ -61,7 +58,8 @@ const ProductInfo = ({ product }) => {
                     <div className={styles.content}>
                         <h2 className={styles['product-name']}>{name}</h2>
                         <div className={styles.rating}>
-                            {StarRating(4.5)} <span>(100 rewiews)</span>
+                            {<StarRating stars={rating} />}
+                            <span>(100 rewiews)</span>
                         </div>
                         <h3 className={styles.price}>
                             {sale < 0 && (

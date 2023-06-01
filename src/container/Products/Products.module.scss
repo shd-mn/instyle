@@ -27,6 +27,10 @@
     height: 4rem;
     border-radius: $btn-b-radius;
     border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: $light-gray;
 
     input {
         width: 100%;
@@ -36,6 +40,12 @@
         border: none;
         outline: none;
         font-size: 1.6rem;
+    }
+
+    span {
+        position: absolute;
+        opacity: 0.7;
+        right: 1rem;
     }
 
     &:hover {
@@ -52,6 +62,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: $text-grey-4;
 
     .btn-group {
         display: flex;
@@ -149,7 +160,8 @@
             padding: 3px;
             text-transform: capitalize;
             font-weight: 500;
-            color: $text-grey-4;
+            color: $text-grey-3;
+            font-weight: 500;
 
             input {
                 margin-right: 8px;
