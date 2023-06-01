@@ -54,8 +54,9 @@ function Header() {
                         className={styles.logo}
                         onClick={() => closeSidebar()}
                     >
-                        <FaShopify style={{ fontSize: '4.6rem' }} />
-                        <h3>SHOPPING</h3>
+                        <h3>
+                            <span>IN</span>STYLE
+                        </h3>
                     </Link>
 
                     <nav>

@@ -25,8 +25,12 @@ const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={`container ${styles.content}`}>
-                <div className={styles.logo}>
-                    <h1>Logo</h1>
+                <div className={styles['site-info']}>
+                    <Link to="/" className={styles.logo}>
+                        <h3>
+                            <span>IN</span>STYLE
+                        </h3>
+                    </Link>
                     <p>
                         Lorem ipsum dolor sit amet, adipisicing elit. Harum
                         doloribus, cum sed consequuntur totam optio.

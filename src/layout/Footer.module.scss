@@ -22,15 +22,27 @@
         gap: 4rem;
     }
 
-    .logo {
-        h1 {
-            margin-bottom: 2rem;
-        }
+    .site-info {
         p {
             width: 80%;
             font-size: 1.4rem;
             line-height: 2;
             opacity: 0.8;
+        }
+    }
+
+    .logo {
+        display: block;
+        margin-bottom: 2rem;
+        h3 {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 2.4rem;
+
+            letter-spacing: 0.1rem;
+
+            span {
+                color: $primary-clr-5;
+            }
         }
     }
 
@@ -59,8 +71,8 @@
         input {
             background: none;
             width: 100%;
-            height: 4rem;
-            border-radius: 2rem;
+            height: 4.6rem;
+            border-radius: 10rem;
             border: 1px solid $white-clr;
             outline: none;
             padding-left: 2rem;
@@ -79,11 +91,13 @@
         button {
             max-width: 40%;
             min-width: 3.2rem;
-            padding: 1rem;
+            padding: 0 1rem;
             height: 3.2rem;
             position: absolute;
             font-weight: 500;
-            top: 0.4rem;
+            // top: 0.4rem;
+            top: 50%;
+            transform: translateY(-50%);
             right: 0.4rem;
             border-radius: 1.6rem;
             z-index: 10;

@@ -38,11 +38,14 @@
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    color: $primary-clr-8;
     h3 {
-        font-size: 1.6rem;
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 2.4rem;
+
+        letter-spacing: 0.1rem;
+        span {
+            color: $primary-clr-5;
+        }
     }
 }
 
@@ -51,6 +54,9 @@
     display: flex;
     justify-content: space-between;
 
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
     align-items: center;
 
     nav {
