@@ -24,6 +24,14 @@ const Products = ({ category }) => {
     } = useFetch('products', '*', `&category=eq.${category}`, '0-17');
     // & price=gt.90 & price=lte.138
 
+    const checkFilter = (list, filterList) => {
+        if (filterList.length > 0) {
+            return filterList.some((f) => list.includes(f));
+        } else {
+            return true;
+        }
+    };
+
     useEffect(() => {
         setFilteredProducts(
             products?.filter((item) => {
@@ -32,11 +40,11 @@ const Products = ({ category }) => {
 
                 return (
                     item.name.toLowerCase().includes(search.toLowerCase()) &&
-                    color.every((f) => item.color.includes(f)) &&
+                    checkFilter(item.subcategory, subcategory) &&
+                    checkFilter(item.color, color) &&
+                    checkFilter(item.size, size) &&
                     calcPrice >= rangeFilter.min &&
-                    calcPrice <= rangeFilter.max &&
-                    size.every((f) => item.size.includes(f)) &&
-                    subcategory.every((f) => item.subcategory.includes(f))
+                    calcPrice <= rangeFilter.max
                 );
             })
         );
@@ -57,11 +65,15 @@ const Products = ({ category }) => {
             );
         } else if (sort === 'lowest') {
             setSortedProduct(
-                filteredProducts.slice().sort((a, b) => a.price - b.price)
+                filteredProducts
+                    .slice()
+                    .sort((a, b) => a.price + a.sale - (b.price + b.sale))
             );
         } else if (sort === 'highest') {
             setSortedProduct(
-                filteredProducts.slice().sort((a, b) => b.price - a.price)
+                filteredProducts
+                    .slice()
+                    .sort((a, b) => b.price + b.sale - (a.price + a.sale))
             );
         }
     }, [sort, filteredProducts]);
