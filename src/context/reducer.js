@@ -115,9 +115,14 @@ export const reducer = (state, action) => {
             };
         }
         case CLEAR_FILTER: {
-            const rangeMax = document
-                .querySelector('#range-slider')
-                .getElementsByTagName('input')[1].max;
+            let rangeMax;
+            if (document.querySelector('#range-slider')) {
+                rangeMax = document
+                    .querySelector('#range-slider')
+                    .getElementsByTagName('input')[1].max;
+            } else {
+                rangeMax = 0;
+            }
 
             return {
                 ...state,
