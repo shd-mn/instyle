@@ -8,20 +8,21 @@ const Cart = () => {
     return (
         <div className="container">
             <Breadcrumb title={'Cart'} />
-            <table className={styles.list}>
-                <thead className={styles['list-header']}>
-                    <tr>
-                        <th>Image</th>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
+            <div className={styles.cart}>
+                <div className={styles['table-title']}>
+                    <h3>Product</h3>
+                    <h3>Price</h3>
+                    <h3>Color</h3>
+                    <h3>Size</h3>
+                    <h3>Quantity</h3>
+                    <h3>Total</h3>
+                    <h3>remove</h3>
+                </div>
+
                 {cart.map((item) => (
                     <CartItem key={item.id} item={item} />
                 ))}
-            </table>
+            </div>
         </div>
     );
 };
