@@ -244,6 +244,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    row-gap: 6rem;
+    
 
     @include sm {
         grid-template-columns: repeat(2, 1fr);
