@@ -16,14 +16,16 @@ const PriceRange = ({ title, products }) => {
     const { rangeFilter, currency, dispatch } = useMyContext();
     useEffect(() => {
         setMaxRange(
-            products
-                .map((item) => item.price + item.sale)
-                .reduce((acc, cur) => {
-                    if (acc < cur) {
-                        acc = cur;
-                    }
-                    return acc;
-                }, 0)
+            Math.ceil(
+                products
+                    .map((item) => item.price + item.sale)
+                    .reduce((acc, cur) => {
+                        if (acc < cur) {
+                            acc = cur;
+                        }
+                        return acc;
+                    }, 0)
+            )
         );
 
         dispatch({
