@@ -4,6 +4,7 @@
     background-color: $light-gray;
     padding: 4rem 0;
     margin-bottom: 8rem;
+
     :global(.container) {
         margin-bottom: 0;
     }
@@ -13,9 +14,11 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+
     @include lg {
         grid-template-columns: 1fr 1fr;
     }
+
     @include md {
         grid-template-columns: 1fr;
     }
@@ -25,6 +28,12 @@
     @include lg {
         margin-bottom: 5rem;
     }
+
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+    }
 }
 
 .figure {
@@ -32,12 +41,15 @@
     height: 25rem;
     overflow: hidden;
     margin-bottom: 2rem;
+
     @include lg {
         height: 30rem;
     }
+
     @include md {
         height: 50rem;
     }
+
     @include sm {
         height: 40rem;
     }
@@ -45,10 +57,6 @@
     img {
         transition: all 0.3s;
         object-fit: cover;
-
-        &:hover {
-            transform: scale(1.1);
-        }
     }
 }
 
@@ -61,19 +69,21 @@
 
     .category {
         color: $text-grey-4;
-        font-weight: 400;
-        letter-spacing: 0.5px;
+        font-weight: 500;
+        letter-spacing: 2px;
     }
 
     .title {
         color: $text-grey-1;
         align-self: flex-start;
     }
-    // .text {
-    //     color: $text-grey-4;
-    //     font-weight: 400;
-    //     line-height: 1.1;
-    // }
+
+    .text {
+        color: $text-grey-4;
+        font-weight: 500;
+        line-height: 1.1;
+    }
+
     a,
     a:link,
     a:visited {

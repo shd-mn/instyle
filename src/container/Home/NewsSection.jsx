@@ -3,6 +3,7 @@ import { useFetch } from '../../hooks/useFetch';
 import styles from './NewsSection.module.scss';
 
 import Skeleton from 'react-loading-skeleton';
+import { IoChevronForwardOutline } from 'react-icons/io5';
 const NewsSection = () => {
     const { data: news, isLoading, error } = useFetch('news', '*', '', '0-2');
 
@@ -12,30 +13,30 @@ const NewsSection = () => {
                 <div className="category-nav">
                     <h2 className="h2">Latest News</h2>
                     <Link className="link" to="/news">
-                        View All
+                        View All <IoChevronForwardOutline />
                     </Link>
                 </div>
                 <div className={styles.news}>
                     {isLoading && <NewsSkeleton count={3} />}
                     {news.map((item) => (
-                        <article key={item.id} className={styles['news-item']}>
-                            <figure className={styles.figure}>
-                                <img src={item.img[0]} alt={item.title} />{' '}
-                            </figure>
-                            <div className={styles.content}>
-                                <h5 className={styles.category}>
-                                    {item.category}
-                                </h5>
-
-                                <h4 className={styles.title}>{item.title}</h4>
-                                {/* <p className={styles.text}>
-                                    {item.content.substring(0, 120)}...
-                                </p> */}
-                                <Link className="link" to={`/news/${item.id}`}>
-                                    Read More...
-                                </Link>
-                            </div>
-                        </article>
+                        <Link key={item.id} to={`/news/${item.id}`}>
+                            <article className={styles['news-item']}>
+                                <figure className={styles.figure}>
+                                    <img src={item.img[0]} alt={item.title} />{' '}
+                                </figure>
+                                <div className={styles.content}>
+                                    <h5 className={styles.category}>
+                                        {item.category}
+                                    </h5>
+                                    <h4 className={styles.title}>
+                                        {item.title}
+                                    </h4>
+                                    <p className={styles.text}>
+                                        {item.content.substring(0, 120)}...
+                                    </p>
+                                </div>
+                            </article>
+                        </Link>
                     ))}
                 </div>
             </div>

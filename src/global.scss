@@ -131,7 +131,7 @@ img {
         height: 3px;
         width: 0px;
         background-color: $primary-clr-5;
-        transition: all 0.1s;
+        transition: all 0.2s;
     }
 
     &:hover {
@@ -276,6 +276,15 @@ button {
     justify-content: space-between;
     margin-bottom: 3rem;
     color: $text-grey-1;
+
+    a,
+    a:link,
+    a:visited {
+        display: flex;
+        gap: 0.6rem;
+        padding-right: 0;
+        font-weight: 500;
+    }
 
     @include md {
         flex-direction: column;
