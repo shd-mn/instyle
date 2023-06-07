@@ -1,21 +1,16 @@
 @use '../scss/' as *;
 .sidebar {
-    width: 30rem;
+    width: 36rem;
     height: 100%;
-    background: $light-gray;
     position: fixed;
     top: 8rem;
     z-index: 50;
     right: -30rem;
-    transition: all 0.3s;
-    visibility: visible;
-    opacity: 0;
+    background: $light-gray;
+    transition: all 0.2s ease-in-out;
+    visibility: hidden;
     pointer-events: none;
-    display: none;
-    padding-left: 2rem;
-    @include lg {
-        display: none;
-    }
+    padding: 4rem 0 0 2rem;
 
     a {
         font-weight: 500;
@@ -25,7 +20,7 @@
     }
 
     .action {
-        padding-top: 2rem;
+        width: 100%;
         display: flex;
         align-items: center;
         gap: 3rem;
@@ -34,10 +29,6 @@
         .link {
             position: relative;
             font-size: 2.4rem;
-        }
-
-        @include xl {
-            gap: 2rem;
         }
     }
     nav {
