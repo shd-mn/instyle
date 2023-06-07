@@ -1,7 +1,7 @@
 import styles from './CategoryButtons.module.scss';
 
 const CategoryButtons = ({ selected, handleCategory }) => {
-    const category = ['all', 'women', 'men', 'children'];
+    const category = ['all', 'women', 'men', 'baby'];
 
     return (
         <div className={styles['category-btn-group']}>

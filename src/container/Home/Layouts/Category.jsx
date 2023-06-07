@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ProductCard from '../../../layout/ProductCard';
 import CategoryNav from './CategoryNav';
 import CardSkeleton from '../../../layout/CardSkeleton';
@@ -7,17 +7,10 @@ import 'react-multi-carousel/lib/styles.css';
 import styles from './Category.module.scss';
 
 const responsive = {
-    xl2: {
-        breakpoint: { max: 4000, min: 1280 },
-        items: 4,
-    },
-    xl: {
-        breakpoint: { max: 1280, min: 1140 },
-        items: 4,
-    },
     lg: {
-        breakpoint: { max: 1140, min: 768 },
+        breakpoint: { max: 4000, min: 768 },
         items: 4,
+        slidesToSlide: 2,
     },
     md: {
         breakpoint: { max: 768, min: 464 },
@@ -32,16 +25,22 @@ const responsive = {
 
 const Category = ({ products, isLoading, sectionTitle }) => {
     const [selected, setSelected] = useState('all');
-
-    const filteredProduct =
-        selected === 'all'
-            ? products
-            : products.filter((product) => product.category === selected);
+    const [filter, setFilter] = useState([]);
+    const carouselRef = useRef(null);
 
     const handleCategory = (e, str) => {
         e.preventDefault();
         setSelected(str);
     };
+
+    useEffect(() => {
+        selected === 'all'
+            ? setFilter(products)
+            : setFilter(
+                  products.filter((product) => product.category === selected)
+              );
+        carouselRef.current.goToSlide(0, true);
+    }, [products, selected]);
 
     return (
         <section>
@@ -54,10 +53,10 @@ const Category = ({ products, isLoading, sectionTitle }) => {
                 {isLoading && <CardSkeleton count={4} />}
                 <Carousel
                     responsive={responsive}
+                    ref={carouselRef}
                     containerClass={styles['product-category']}
-                    // removeArrowOnDeviceType={['md', 'sm']}
                 >
-                    {filteredProduct.map((product) => (
+                    {filter.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
                 </Carousel>
