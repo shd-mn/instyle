@@ -12,10 +12,12 @@ import NotFound from './pages/NotFound';
 import WishlistPage from './pages/WishlistPage';
 import CartPage from './pages/CartPage';
 import Footer from './layout/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
     return (
         <Router>
+            <ScrollToTop />
             <Header />
             <Sidebar />
             <Routes>

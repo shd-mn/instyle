@@ -13,9 +13,6 @@
 
 html {
     font-size: 62.5%;
-    scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
-    scroll-behavior: smooth;
 
     @include xl {
         font-size: 56.25%;
