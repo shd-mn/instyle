@@ -17,14 +17,8 @@ import styles from './Header.module.scss';
 function Header() {
     const [isSearchActive, setIsSearchActive] = useState(false);
     const [search, setSearch] = useState('');
-    const {
-        cart,
-        wishlist,
-        closeSidebar,
-        showSidebar,
-        isSidebarShow,
-        isSticky,
-    } = useMyContext();
+    const { cart, wishlist, closeSidebar, showSidebar, isSidebarShow } =
+        useMyContext();
 
     const handleSearch = () => {
         setIsSearchActive(!isSearchActive);
@@ -37,9 +31,7 @@ function Header() {
     };
 
     return (
-        <header
-            className={`${styles.header} ${isSticky ? styles.sticky : null}`}
-        >
+        <header className={styles.header}>
             <div className={styles.container}>
                 <Search
                     search={search}
