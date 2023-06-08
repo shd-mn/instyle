@@ -10,6 +10,8 @@ import {
     SHOW_SIDEBAR,
     CLEAR_FILTER,
     RANGE_FILTER,
+    REMOVE_CART_ITEM,
+    CLEAR_CART,
 } from './actions';
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -71,6 +73,19 @@ export const reducer = (state, action) => {
 
             localStorage.setItem('cart', JSON.stringify(newCart));
             return { ...state, cart: newCart };
+        }
+
+        case REMOVE_CART_ITEM: {
+            const newCart = state.cart.filter(
+                (item) => item.id !== action.payload
+            );
+            localStorage.setItem('cart', JSON.stringify(newCart));
+            return { ...state, cart: newCart };
+        }
+
+        case CLEAR_CART: {
+            localStorage.setItem('cart', JSON.stringify([]));
+            return { ...state, cart: [] };
         }
 
         case TOGGLE_FILTER: {

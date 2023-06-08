@@ -5,9 +5,11 @@ import {
     GET_WISHLIST,
     TOGGLE_WISHLIST,
     TOGGLE_FILTER,
+    REMOVE_CART_ITEM,
     ADD_TO_CART,
     SHOW_SIDEBAR,
     CLEAR_FILTER,
+    CLEAR_CART,
 } from './actions';
 import { reducer } from './reducer';
 
@@ -44,8 +46,16 @@ const MainProvider = ({ children }) => {
         };
         dispatch({ type: TOGGLE_CART, payload: cartItem });
     };
+
     const addToCart = (product) => {
         dispatch({ type: ADD_TO_CART, payload: product });
+    };
+
+    const removeCartItem = (id) => {
+        dispatch({ type: REMOVE_CART_ITEM, payload: id });
+    };
+    const clearCart = () => {
+        dispatch({ type: CLEAR_CART });
     };
 
     const toggleWishlist = (e, product) => {
@@ -107,6 +117,8 @@ const MainProvider = ({ children }) => {
         clearFilter,
         showSidebar,
         closeSidebar,
+        removeCartItem,
+        clearCart,
     };
 
     return (
