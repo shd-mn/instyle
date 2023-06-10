@@ -1,7 +1,7 @@
 export const convertCurrency = (price, currency) => {
     if (currency === 'USD') {
-        return price.toFixed(2);
+        return <span>{price.toFixed(2)} $</span>;
     } else if (currency === 'AZN') {
-        return (price * 1.7).toFixed(2);
+        return <span>{(price * 1.7).toFixed(2)} ₼</span>;
     }
 };
