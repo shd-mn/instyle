@@ -4,13 +4,16 @@ import './global.scss';
 import MainProvider from '../src/context/MainContext';
 import ProductsProvider from './context/ProductsContext';
 import App from './App';
+import CartProvider from './context/CartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <MainProvider>
             <ProductsProvider>
-                <App />
+                <CartProvider>
+                    <App />
+                </CartProvider>
             </ProductsProvider>
         </MainProvider>
     </React.StrictMode>

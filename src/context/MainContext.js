@@ -1,15 +1,10 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import {
-    TOGGLE_CART,
-    GET_CART,
     GET_WISHLIST,
     TOGGLE_WISHLIST,
     TOGGLE_FILTER,
-    REMOVE_CART_ITEM,
-    ADD_TO_CART,
     SHOW_SIDEBAR,
     CLEAR_FILTER,
-    CLEAR_CART,
 } from './actions';
 import { reducer } from './reducer';
 
@@ -19,7 +14,6 @@ const initialState = {
     isLoading: false,
     error: '',
     currency: 'USD',
-    cart: [],
     wishlist: [],
     isSidebarShow: false,
     isChecked: {
@@ -36,40 +30,12 @@ const initialState = {
 const MainProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const toggleCart = (e, product) => {
-        e.preventDefault();
-        const cartItem = {
-            ...product,
-            quantity: 1,
-            selectedColor: product.color[0],
-            selectedSize: product.size[0],
-        };
-        dispatch({ type: TOGGLE_CART, payload: cartItem });
-    };
-
-    const addToCart = (product) => {
-        dispatch({ type: ADD_TO_CART, payload: product });
-    };
-
-    const removeCartItem = (id) => {
-        dispatch({ type: REMOVE_CART_ITEM, payload: id });
-    };
-    const clearCart = () => {
-        dispatch({ type: CLEAR_CART });
-    };
-
     const toggleWishlist = (e, product) => {
         e.preventDefault();
         dispatch({ type: TOGGLE_WISHLIST, payload: product });
     };
 
     useEffect(() => {
-        if (localStorage.getItem('cart')) {
-            dispatch({
-                type: GET_CART,
-                payload: JSON.parse(localStorage.getItem('cart')),
-            });
-        }
         if (localStorage.getItem('wishlist')) {
             dispatch({
                 type: GET_WISHLIST,
@@ -110,15 +76,12 @@ const MainProvider = ({ children }) => {
     const value = {
         ...state,
         dispatch,
-        toggleCart,
-        addToCart,
+
         toggleWishlist,
         filterProducts,
         clearFilter,
         showSidebar,
         closeSidebar,
-        removeCartItem,
-        clearCart,
     };
 
     return (

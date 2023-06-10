@@ -8,11 +8,12 @@ import {
 } from 'react-icons/io5';
 import styles from './ProductCard.module.scss';
 import { StarRating } from '../components/StarRating';
+import { useCartContext } from '../context/CartContext';
 
 const ProductCard = ({ product }) => {
     const { id, name, category, price, sale, url, rating } = product;
-    const { currency, cart, toggleCart, wishlist, toggleWishlist } =
-        useMyContext();
+    const { currency, wishlist, toggleWishlist } = useMyContext();
+    const { cart, toggleCart } = useCartContext();
     const hasCart = cart.some((item) => item.id === product.id);
     const hasWishlist = wishlist.some((item) => item.id === product.id);
 
@@ -56,12 +57,12 @@ const ProductCard = ({ product }) => {
                         {<StarRating stars={rating} />}
                         <p className={styles['product-price']}>
                             {sale < 0 && (
-                                <span> {convertCurrency(price, currency)}</span>
+                                <span className={styles.sale}>
+                                    {convertCurrency(price, currency)}
+                                </span>
                             )}
 
                             {convertCurrency(price + sale, currency)}
-
-                            {currency === 'USD' ? '$' : '₼'}
                         </p>
                     </div>
                 </div>

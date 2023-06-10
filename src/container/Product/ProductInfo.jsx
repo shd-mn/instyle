@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { convertCurrency } from '../../utils/convertCurrency';
 import { useMyContext } from '../../context/MainContext';
+import { useCartContext } from '../../context/CartContext';
 import { StarRating } from '../../components/StarRating';
 import Breadcrumb from '../../components/Breadcrumb';
 import ImageGalery from '../../components/ImageGalery';
@@ -12,14 +13,13 @@ import styles from './Product.module.scss';
 const ProductInfo = ({ product }) => {
     const { name, description, url, color, size, price, sale, rating } =
         product;
-    const { addToCart } = useMyContext();
+    const { addToCart } = useCartContext();
+    const { currency } = useMyContext();
+    const { pathname } = useLocation();
 
     const [selectedColor, setSelectedColor] = useState(color[0]);
     const [selectedSize, setSelectedSize] = useState(size[0]);
     const [quantity, setQuantity] = useState(1);
-
-    const { currency } = useMyContext();
-    const { pathname } = useLocation();
 
     const handleQuantity = (value) => {
         if (value === 'inc' && quantity < 100) {
@@ -40,13 +40,7 @@ const ProductInfo = ({ product }) => {
     };
 
     const handleSubmit = () => {
-        const cartItem = {
-            ...product,
-            quantity,
-            selectedColor,
-            selectedSize,
-        };
-        addToCart(cartItem);
+        addToCart({ product, quantity, selectedColor, selectedSize });
     };
 
     return (
@@ -63,15 +57,12 @@ const ProductInfo = ({ product }) => {
                         </div>
                         <h3 className={styles.price}>
                             {sale < 0 && (
-                                <span>
-                                    {' '}
+                                <span className={styles.sale}>
                                     {convertCurrency(price, currency)}
-                                    {currency === 'USD' ? '$' : '₼'}
                                 </span>
                             )}
 
                             {convertCurrency(price + sale, currency)}
-                            {currency === 'USD' ? '$' : '₼'}
                         </h3>
                         <p className={styles.description}>{description}</p>
 

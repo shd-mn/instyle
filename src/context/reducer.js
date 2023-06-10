@@ -1,25 +1,18 @@
 import {
     GET_NEWS,
-    GET_CART,
-    TOGGLE_CART,
     SET_LOADING,
     TOGGLE_WISHLIST,
     GET_WISHLIST,
     TOGGLE_FILTER,
-    ADD_TO_CART,
     SHOW_SIDEBAR,
     CLEAR_FILTER,
     RANGE_FILTER,
-    REMOVE_CART_ITEM,
-    CLEAR_CART,
 } from './actions';
 export const reducer = (state, action) => {
     switch (action.type) {
         case SET_LOADING:
             return { ...state, isLoading: true };
 
-        case GET_CART:
-            return { ...state, cart: action.payload };
         case GET_WISHLIST:
             return { ...state, wishlist: action.payload };
 
@@ -42,50 +35,6 @@ export const reducer = (state, action) => {
 
             localStorage.setItem('wishlist', JSON.stringify(newCart));
             return { ...state, wishlist: newCart };
-        }
-        case TOGGLE_CART: {
-            const checkCartItem = state.cart.some(
-                (item) => item.id === action.payload.id
-            );
-            let newCart;
-            if (checkCartItem) {
-                newCart = state.cart.filter(
-                    (item) => item.id !== action.payload.id
-                );
-            } else {
-                newCart = [...state.cart, action.payload];
-            }
-
-            localStorage.setItem('cart', JSON.stringify(newCart));
-            return { ...state, cart: newCart };
-        }
-
-        case ADD_TO_CART: {
-            const checkCartItem = state.cart.some(
-                (item) => item.id === action.payload.id
-            );
-            let newCart;
-            if (!checkCartItem) {
-                newCart = [...state.cart, action.payload];
-            } else {
-                newCart = [...state.cart];
-            }
-
-            localStorage.setItem('cart', JSON.stringify(newCart));
-            return { ...state, cart: newCart };
-        }
-
-        case REMOVE_CART_ITEM: {
-            const newCart = state.cart.filter(
-                (item) => item.id !== action.payload
-            );
-            localStorage.setItem('cart', JSON.stringify(newCart));
-            return { ...state, cart: newCart };
-        }
-
-        case CLEAR_CART: {
-            localStorage.setItem('cart', JSON.stringify([]));
-            return { ...state, cart: [] };
         }
 
         case TOGGLE_FILTER: {

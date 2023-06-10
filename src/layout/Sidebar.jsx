@@ -8,9 +8,11 @@ import {
     AiOutlineShoppingCart,
 } from 'react-icons/ai';
 import { useMyContext } from '../context/MainContext';
+import { useCartContext } from '../context/CartContext';
 
 const Sidebar = () => {
-    const { cart, wishlist, isSidebarShow, closeSidebar } = useMyContext();
+    const { wishlist, isSidebarShow, closeSidebar } = useMyContext();
+    const { cart } = useCartContext();
 
     return (
         <>

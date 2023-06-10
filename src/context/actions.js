@@ -5,9 +5,10 @@ export const GET_CART = 'GET_CART';
 export const GET_WISHLIST = 'GET_WISHLIST';
 
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const TOGGLE_CART = 'TOGGLE_CART';
+export const UPTADE_CART = 'UPTADE_CART';
 export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM';
 export const CLEAR_CART = 'CLEAR_CART';
-export const TOGGLE_CART = 'TOGGLE_CART';
 
 export const TOGGLE_WISHLIST = 'TOGGLE_WISHLIST';
 
