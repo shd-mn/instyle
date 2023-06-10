@@ -1,23 +1,35 @@
 import { useState } from 'react';
 import { useMyContext } from '../../context/MainContext';
+import { useCartContext } from '../../context/CartContext';
 import { convertCurrency } from '../../utils/convertCurrency';
 import { Link } from 'react-router-dom';
 import { IoAddOutline, IoRemoveOutline, IoClose } from 'react-icons/io5';
 import styles from './Cart.module.scss';
 
-const CartItem = ({ item }) => {
-    const { currency, removeCartItem } = useMyContext();
-    const [quantity, setQuantity] = useState(item.quantity);
+const CartItem = ({ item, handleQuantity }) => {
+    const { currency } = useMyContext();
+    const { removeCartItem } = useCartContext();
+    const [inputValue, setInputValue] = useState(item.quantity);
     const price = item.price + item.sale;
-    const itemTotal = (price * quantity).toFixed(2);
+    const itemTotal = price * inputValue;
 
-    const handleQuantity = (value) => {
-        if (value === 'inc' && quantity < 100) {
-            setQuantity((prev) => prev + 1);
-        } else if (value === 'dec' && quantity > 1) {
-            setQuantity((prev) => prev - 1);
+    const handleInput = (value) => {
+        if (value === 'inc' && inputValue < 100) {
+            setInputValue((prev) => prev + 1);
+            handleQuantity(item.id, inputValue + 1);
+        } else if (value === 'dec' && inputValue > 1) {
+            setInputValue((prev) => prev - 1);
+            handleQuantity(item.id, inputValue - 1);
+        } else if (value === 'dec' && inputValue <= 1) {
+            removeCartItem(item.id);
         }
     };
+
+    const handleChange = (e) => {
+        setInputValue(+e.target.value);
+        handleQuantity(item.id, +e.target.value);
+    };
+
     return (
         <div className={styles['cart-item']}>
             <Link to={`/${item.category}/${item.id}`} className={styles.name}>
@@ -27,27 +39,30 @@ const CartItem = ({ item }) => {
                 <h4>{item.name}</h4>
             </Link>
 
-            <h4 className={styles.price}>
-                {convertCurrency(price, currency)}{' '}
-                {currency === 'USD' ? '$' : '₼'}
-            </h4>
+            <h4 className={styles.price}>{convertCurrency(price, currency)}</h4>
 
             <h4>{item.selectedColor}</h4>
 
             <h4>{item.selectedSize}</h4>
 
             <div className={styles['btn-group']}>
-                <button type="button" onClick={() => handleQuantity('dec')}>
+                <button type="button" onClick={() => handleInput('dec')}>
                     <IoRemoveOutline />
                 </button>
-                <input type="number" min="1" max="100" value={quantity} />
-                <button type="button" onClick={() => handleQuantity('inc')}>
+                <input
+                    type="number"
+                    min="1"
+                    max="100"
+                    value={inputValue}
+                    onChange={handleChange}
+                />
+                <button type="button" onClick={() => handleInput('inc')}>
                     <IoAddOutline />
                 </button>
             </div>
 
             <h4 className={styles['item-total']}>
-                {itemTotal} {currency === 'USD' ? '$' : '₼'}
+                {convertCurrency(itemTotal, currency)}
             </h4>
 
             <button
