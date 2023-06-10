@@ -1,11 +1,11 @@
+import { useEffect, useState } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { useMyContext } from '../../context/MainContext';
 import Breadcrumb from '../../components/Breadcrumb';
 import Filter from './Filter';
 import ProductCard from '../../layout/ProductCard';
-import styles from './Products.module.scss';
 import CardSkeleton from '../../layout/CardSkeleton';
-import { useEffect, useState } from 'react';
+import styles from './Products.module.scss';
 import {
     IoChevronDownOutline,
     IoChevronUpOutline,

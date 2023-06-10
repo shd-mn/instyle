@@ -3,6 +3,7 @@ import { links } from '../utils/constants';
 
 import { NavLink, Link } from 'react-router-dom';
 import { useMyContext } from '../context/MainContext';
+import { useCartContext } from '../context/CartContext';
 import {
     AiOutlineSearch,
     AiOutlineUser,
@@ -17,8 +18,9 @@ import styles from './Header.module.scss';
 function Header() {
     const [isSearchActive, setIsSearchActive] = useState(false);
     const [search, setSearch] = useState('');
-    const { cart, wishlist, closeSidebar, showSidebar, isSidebarShow } =
+    const { wishlist, closeSidebar, showSidebar, isSidebarShow } =
         useMyContext();
+    const { cart } = useCartContext();
 
     const handleSearch = () => {
         setIsSearchActive(!isSearchActive);
