@@ -1,4 +1,5 @@
-import { BiSupport } from 'react-icons/bi';
+import { FaRegMoneyBillAlt } from 'react-icons/fa';
+import { BsTruck, BsHeadset, BsShieldLock } from 'react-icons/bs';
 import styles from './Feature.module.scss';
 const Feature = () => {
     return (
@@ -7,29 +8,38 @@ const Feature = () => {
                 <ul>
                     <li>
                         <span>
-                            <BiSupport size={'22px'} />
+                            <BsTruck />
                         </span>
                         <div className={styles['text-box']}>
                             <h3>Free Shipping</h3>
-                            <p>On All Orders</p>
+                            <p>For all oder over $99</p>
                         </div>
                     </li>
                     <li>
                         <span>
-                            <BiSupport size={'22px'} />
+                            <FaRegMoneyBillAlt />
                         </span>
                         <div className={styles['text-box']}>
-                            <h3>Free Shipping</h3>
-                            <p>On All Orders</p>
+                            <h3>Money Back Guarantee</h3>
+                            <p>If good have Problems</p>
                         </div>
                     </li>
                     <li>
                         <span>
-                            <BiSupport size={'22px'} />
+                            <BsHeadset />
                         </span>
                         <div className={styles['text-box']}>
-                            <h3>100% Return</h3>
-                            <p>On All Orders</p>
+                            <h3>Online Support 24/7</h3>
+                            <p>Dedicated support</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span>
+                            <BsShieldLock />
+                        </span>
+                        <div className={styles['text-box']}>
+                            <h3>Payment Secure</h3>
+                            <p>100% secure payment</p>
                         </div>
                     </li>
                 </ul>

@@ -9,19 +9,30 @@
 
         li {
             display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 2rem;
-            background-color: $light-gray;
+            border-right: 1px solid $gray-clr-1;
             width: 100%;
             padding: 2rem 2rem;
 
             h3 {
-                margin-bottom: 5px;
+                margin-bottom: 1.5rem;
             }
 
             .text-box {
-                padding-left: 2rem;
-                border-left: 1px solid $gray-clr-4;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            svg {
+                font-size: 4.2rem;
+            }
+
+            &:last-of-type {
+                border-right: none;
             }
         }
 
