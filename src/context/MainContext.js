@@ -5,6 +5,8 @@ import {
     TOGGLE_FILTER,
     SHOW_SIDEBAR,
     CLEAR_FILTER,
+    SHOW_MODAL,
+    CLOSE_MODAL,
 } from './actions';
 import { reducer } from './reducer';
 
@@ -16,6 +18,8 @@ const initialState = {
     currency: 'USD',
     wishlist: [],
     isSidebarShow: false,
+    isModalShow: false,
+    modalContent: {},
     isChecked: {
         size: [],
         color: [],
@@ -59,9 +63,21 @@ const MainProvider = ({ children }) => {
         dispatch({ type: SHOW_SIDEBAR, payload: false });
     };
 
+    const openModal = (product) => {
+        console.log(product);
+        dispatch({ type: SHOW_MODAL, payload: product });
+    };
+
+    const closeModal = () => {
+        dispatch({ type: CLOSE_MODAL });
+    };
+
     const handleScroll = () => {
         if (state.isSidebarShow) {
             closeSidebar();
+        }
+        if (state.isModalShow) {
+            closeModal();
         }
     };
 
@@ -82,6 +98,8 @@ const MainProvider = ({ children }) => {
         clearFilter,
         showSidebar,
         closeSidebar,
+        openModal,
+        closeModal,
     };
 
     return (

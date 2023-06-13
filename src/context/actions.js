@@ -15,6 +15,9 @@ export const TOGGLE_WISHLIST = 'TOGGLE_WISHLIST';
 export const TOGGLE_FILTER = 'TOGGLE_FILTER';
 export const RANGE_FILTER = 'RANGE_FILTER';
 export const CLEAR_FILTER = 'CLEAR_FILTER';
+
 export const SHOW_SIDEBAR = 'SHOW_SIDEBAR';
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export const SET_CURRENCY = 'SET_CURRENCY';

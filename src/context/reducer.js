@@ -7,6 +7,8 @@ import {
     SHOW_SIDEBAR,
     CLEAR_FILTER,
     RANGE_FILTER,
+    SHOW_MODAL,
+    CLOSE_MODAL,
 } from './actions';
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -103,6 +105,12 @@ export const reducer = (state, action) => {
         }
         case SHOW_SIDEBAR: {
             return { ...state, isSidebarShow: action.payload };
+        }
+        case SHOW_MODAL: {
+            return { ...state, modalContent: action.payload, isModalShow: true };
+        }
+        case CLOSE_MODAL: {
+            return { ...state, isModalShow: false };
         }
         default:
             throw new Error('Unsupported action type');

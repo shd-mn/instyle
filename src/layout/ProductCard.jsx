@@ -12,7 +12,7 @@ import { useCartContext } from '../context/CartContext';
 
 const ProductCard = ({ product }) => {
     const { id, name, category, price, sale, url, rating } = product;
-    const { currency, wishlist, toggleWishlist } = useMyContext();
+    const { currency, wishlist, toggleWishlist, openModal } = useMyContext();
     const { cart, toggleCart } = useCartContext();
     const hasCart = cart.some((item) => item.id === product.id);
     const hasWishlist = wishlist.some((item) => item.id === product.id);
@@ -23,11 +23,11 @@ const ProductCard = ({ product }) => {
                 <img src={url[0]} alt={name} />
                 <div className={styles['button-group']}>
                     <button
-                        className={`${styles.btn} ${hasCart && styles.active}`}
+                        className={styles.btn}
                         type="button"
-                        onClick={(e) => toggleCart(e, product)}
+                        onClick={() => openModal(product)}
                     >
-                        <IoCartOutline />
+                        <IoResizeOutline />
                     </button>
                     <button
                         className={`${styles.btn} ${
@@ -38,8 +38,12 @@ const ProductCard = ({ product }) => {
                     >
                         <IoHeartOutline />
                     </button>
-                    <button className={styles.btn} type="button">
-                        <IoResizeOutline />
+                    <button
+                        className={`${styles.btn} ${hasCart && styles.active}`}
+                        type="button"
+                        onClick={(e) => toggleCart(e, product)}
+                    >
+                        <IoCartOutline />
                     </button>
                 </div>
 
