@@ -13,6 +13,7 @@ import WishlistPage from './pages/WishlistPage';
 import CartPage from './pages/CartPage';
 import Footer from './layout/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import ProductModal from './layout/ProductModal';
 
 function App() {
     return (
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
+            <ProductModal />
             <Footer />
         </Router>
     );
