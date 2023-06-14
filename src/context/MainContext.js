@@ -19,7 +19,7 @@ const initialState = {
     wishlist: [],
     isSidebarShow: false,
     isModalShow: false,
-    modalContent: {},
+    modalContent: [],
     isChecked: {
         size: [],
         color: [],
@@ -63,9 +63,8 @@ const MainProvider = ({ children }) => {
         dispatch({ type: SHOW_SIDEBAR, payload: false });
     };
 
-    const openModal = (product) => {
-        console.log(product);
-        dispatch({ type: SHOW_MODAL, payload: product });
+    const openModal = (url) => {
+        dispatch({ type: SHOW_MODAL, payload: url });
     };
 
     const closeModal = () => {

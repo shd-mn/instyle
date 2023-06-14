@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
                     <button
                         className={styles.btn}
                         type="button"
-                        onClick={() => openModal(product)}
+                        onClick={() => openModal(url)}
                     >
                         <IoResizeOutline />
                     </button>

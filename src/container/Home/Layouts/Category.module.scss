@@ -10,9 +10,12 @@
         transition: all 0.2s;
         z-index: 20;
         opacity: 0.5;
+        background-color: $primary-clr-5;
+        box-shadow: 0 0 3px 1px $primary-clr-2;
         &:hover {
             background-color: $primary-clr-5;
             opacity: 1;
+            box-shadow: none;
         }
     }
 }
