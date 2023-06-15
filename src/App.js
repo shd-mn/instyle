@@ -9,6 +9,7 @@ import SingleProduct from './pages/SingleProduct';
 import NewsPage from './pages/NewsPage';
 import SingleNews from './container/News/SingleNews';
 import NotFound from './pages/NotFound';
+import LoginPage from './pages/LoginPage';
 import WishlistPage from './pages/WishlistPage';
 import CartPage from './pages/CartPage';
 import Footer from './layout/Footer';
@@ -39,6 +40,7 @@ function App() {
                     <Route index element={<NewsPage />} />
                     <Route path=":id" element={<SingleNews />} />
                 </Route>
+                <Route path="/login" element={<LoginPage />} />
                 <Route path="/wishlist" element={<WishlistPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="*" element={<NotFound />} />
