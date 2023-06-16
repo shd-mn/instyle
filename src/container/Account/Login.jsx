@@ -1,24 +1,24 @@
 import { Link } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumb';
 
-import styles from './Login.module.scss';
+import styles from './Sign.module.scss';
 
 const Login = () => {
     return (
         <div className="container">
             <Breadcrumb title="login" />
-            <div className={styles.login}>
-                <div className={styles['login-header']}>
+            <div className={styles.sign}>
+                <div className={styles['sign-header']}>
                     <h2>Login</h2>
-                    <p>Enter login detalis to get access</p>
+                    <p>Enter login details to get access</p>
                 </div>
-                <form className={styles['login-body']}>
+                <form className={styles['sign-body']}>
                     <div className={styles.fields}>
                         <label htmlFor="email">Email Address</label>
                         <input
                             type="email"
                             id="email"
-                            placeholder="Email address"
+                            placeholder="Enter email address"
                         />
                     </div>
                     <div className={styles.fields}>
@@ -26,10 +26,10 @@ const Login = () => {
                         <input
                             type="password"
                             id="password"
-                            placeholder="Enter Password"
+                            placeholder="Enter password"
                         />
                     </div>
-                    <div className={styles['login-action']}>
+                    <div className={styles['sign-action']}>
                         <div className={styles.checkbox}>
                             <input type="checkbox" id="checkbox" />
                             <label htmlFor="checkbox">Keep Me Logged In</label>
@@ -40,7 +40,7 @@ const Login = () => {
                         </Link>
                     </div>
                     <div className={styles['form-footer']}>
-                        <div className={styles.sign}>
+                        <div className={styles.account}>
                             Don't have an account?{' '}
                             <Link className="link" to="/register">
                                 {' '}

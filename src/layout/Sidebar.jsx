@@ -22,7 +22,7 @@ const Sidebar = () => {
                 }`}
             >
                 <div className={styles.action} onClick={() => closeSidebar()}>
-                    <Link to="/account" className={styles.link}>
+                    <Link to="/login" className={styles.link}>
                         <AiOutlineUser />
                     </Link>
                     <Link to="/wishlist" className={styles.link}>
